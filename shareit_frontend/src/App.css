@@ -1,3 +1,4 @@
+*{padding :0; margin :0}
 .App {
   text-align: center;
 }
@@ -35,4 +36,82 @@
   to {
     transform: rotate(360deg);
   }
+}
+.background {
+  height: 100vh;
+  background-image: url("./img/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-attachment: fixed;
+}
+.modal {
+  background-color: white;
+  min-width: 225px;
+  width: 70vw;
+  height :70vh;
+  display :inline-block;
+  border: 2px solid;
+  margin-left:2vw;
+  margin-top:20vh;
+  border-radius: 10px 10px 10px 10px / 10px 10px 10px 10px;
+}
+.icon {
+  margin-top: 7vh;
+
+  margin-bottom: -25vh;
+  width: 15%;
+  min-width: 100px;
+  vertical-align: top;
+}
+.modalTop {
+  background-color: rgb(124, 147, 249);
+  border-radius: 8px 8px 0 0  / 8px 8px 0 0;
+  display:flex;
+}
+.modalSec {
+  width:100%;
+}
+.content1 {
+  /*border: 2px solid;*/
+  display:inline-block;
+  float: left;
+}
+.content2 {
+  width : 90%;
+
+}
+.content3 {
+  /*border: 2px solid;*/
+  display:inline-block;
+  padding-top:5px;
+  padding-right:5px;
+}
+.modalMain {
+  padding-top:10vh;
+  margin-bottom:-6vh;
+  display : flex;
+  justify-content: center;
+}
+.modalBottom {
+
+  margin-top:8vh;
+  display : flex;
+  justify-content: center;
+}
+.bot1 {
+
+  width:110px;
+
+  max-width:20vw;
+}
+.bot2 {
+  width:70px;
+  margin-left:5vw;
+  max-width:14vw;
+}
+.bot3 {
+  width:70px;
+  margin-left:7vw;
+  max-width:14vw;
 }
