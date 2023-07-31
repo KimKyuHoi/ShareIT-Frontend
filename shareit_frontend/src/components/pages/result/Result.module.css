@@ -1,0 +1,103 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.backGroundImg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 100vh;
+  z-index: -1;
+}
+
+.topTitle {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.Subtitle {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.MaintitleBox {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12.7vw;
+  height: 7.2vh;
+  border: solid #5b6ee1;
+  border-width: 3px 3px 10px 3px;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MainTitleContent {
+  font-weight: normal;
+}
+
+.titleContentBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 12.7vh;
+  background-color: white;
+  border: 5px solid #5b6ee1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleContent {
+  margin: 1rem;
+  text-align: start;
+}
+
+.contentBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* 반응형 CSS */
+@media (min-width: 278px) {
+  .MainTitleContent {
+    font-size: 0.8rem;
+  }
+  .titleContentBox {
+    width: 90vw;
+  }
+  .titleContent {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .MainTitleContent {
+    font-size: 1rem;
+  }
+  .titleContentBox {
+    width: 56vw;
+    min-width: 430px;
+  }
+  .titleContent {
+    font-size: 1rem;
+  }
+}
