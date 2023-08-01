@@ -181,7 +181,8 @@ color: #000000;
   position: relative;
   width: $question-wrapper-width-vw;
   height: $question-wrapper-height-vh;
-  max-width: 1024px;
+
+  max-width: 696px;
   min-height: 432px;
   box-sizing: border-box;
 
@@ -235,7 +236,8 @@ color: #000000;
   position: absolute;
   
   width:  toVw(505px, $viewportWidth);
-  max-width: 950px;
+  
+  max-width: 500px;
   height: toVh(17px, $viewportHeight);
 
   top: 107px;
@@ -253,7 +255,7 @@ color: #000000;
 .bar-progress {
   position: absolute;
   width:$bar-progress-width;
-  max-width: 950px;
+  max-width: 496px;
   height: 100%;
   background: $color-bar-progress;
 }
@@ -269,41 +271,6 @@ color: #000000;
   align-items: center;
   text-align: center;
   color: $color-black;
-}
-
-/* Question-answer-text */
-.Question-answer-text-left {
-  position: absolute;
-  width: $question-answer-text-width;
-  height: $question-answer-text-height;
-
-  bottom: calc(10% + 65px);
-  right: calc(50% + 67px);
-
-
-  font-size: 16px;
-}
-
-/* Question-answer-text */
-.Question-answer-text-right {
-  position: absolute;
-  width: $question-answer-text-width;
-  height: $question-answer-text-height;
-
-  bottom: calc(10% + 65px);
-  left: calc(50% + 67px);
-
-  font-size: 16px;
-}
-
-/* Lion */
-.Lion {
-  position: absolute;
-  width: $lion-width;
-  height: $lion-height;
-
-  bottom: 0px;
-  left: calc(50% - 50px);
 }
 
 /* Question-progress-text */
@@ -326,6 +293,16 @@ color: #000000;
    position: absolute;
   // width: $question-wrapper-width-vw;
   // height: $question-header-height-vh;
+}
+
+/* Lion */
+.Lion {
+  position: absolute;
+  width: $lion-width;
+  height: $lion-height;
+
+  bottom: 0px;
+  left: calc(50% - 50px);
 }
 
 /* Question-background */
@@ -386,7 +363,7 @@ color: #000000;
   width: auto;
   bottom: calc(10%);
   // top: calc(50% + 40px);
-  right: calc(50% + 29px);
+  right: calc(50% + 10px);
 
 }
 .Question-answer-rightimg{
@@ -394,7 +371,33 @@ color: #000000;
   height: 128.71px;
   width: auto;
   bottom: calc(10%);
-  left: calc(50% + 29px);
+  left: calc(50% + 10px);
+}
+
+
+/* Question-answer-text */
+.Question-answer-text-left {
+  position: absolute;
+  width: $question-answer-text-width;
+  height: $question-answer-text-height;
+
+  bottom: calc(10% + 65px);
+  right: calc(50% + 48px);
+
+
+  font-size: 16px;
+}
+
+/* Question-answer-text */
+.Question-answer-text-right {
+  position: absolute;
+  width: $question-answer-text-width;
+  height: $question-answer-text-height;
+
+  bottom: calc(10% + 65px);
+  left: calc(50% + 48px);
+
+  font-size: 16px;
 }
 
 .logo{
@@ -417,9 +420,11 @@ color: #000000;
 
 
 //말풍선이 커서 768px하면 튀어나오네요.
-@media screen and (max-width: 810px) {
+@media screen and (max-width: 768px) {
   .Question-wrapper {
     width: 95vw;
+    height: 376.83px;
+    min-height: 50vw;
   }
 
   .Question-answer-leftimg{
