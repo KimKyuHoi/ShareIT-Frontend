@@ -72,8 +72,8 @@
   }
   .sns {
     width: 35vw;
-    max-width: 250px;
-    max-height: 85.16px;
+    max-width: 180px;
+
     margin-top: 3vh;
     margin-left: 15vw;
   }
@@ -90,7 +90,7 @@
   .printer {
     width: 25vw;
     height: auto !important;
-    min-width: 500px;
+    min-width: 440px;
   }
   .flags {
     width: 40vw;
