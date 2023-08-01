@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Result.module.css";
-import Printer from "../../../assets/Printer.png";
+// import Printer from "../../../assets/Printer.png";
 import frontendTitle from "../../../assets/FrontendTitle.png";
 import frontendPrinter from "../../../assets/FrontendPrinter.png";
 import frontendFlag from "../../../assets/FrontendFlag.png";
