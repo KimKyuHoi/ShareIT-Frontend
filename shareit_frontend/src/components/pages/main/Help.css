@@ -5,3 +5,15 @@
     text-align: start;
     margin: 4rem;
 }
+
+@media (min-width: 280px) {
+    .helpPage{
+        font-size: 0.6rem;
+    }
+}
+
+@media (min-width: 768px){
+    .helpPage{
+        font-size: 1rem;
+    }
+}
