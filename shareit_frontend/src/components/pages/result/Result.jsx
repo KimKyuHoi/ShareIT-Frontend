@@ -20,19 +20,19 @@ const DUMMY_DATA = [
 
 
 const Result = () => {
-  const [title, setTitle] = useState("");
-  const [printer, setPrinter] = useState("");
-  const [flags, setFlags] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [printer, setPrinter] = useState("");
+  // const [flags, setFlags] = useState("");
 
-  useEffect(() => {
-    ShowResult().then((data)=>{
-      setTitle(data.title);
-      setPrinter(data.printer);
-      setFlags(data.flags);
-    }).catch((error)=>{
-      console.log(error);
-    });
-  }, []);
+  // useEffect(() => {
+  //   ShowResult().then((data)=>{
+  //     setTitle(data.title);
+  //     setPrinter(data.printer);
+  //     setFlags(data.flags);
+  //   }).catch((error)=>{
+  //     console.log(error);
+  //   });
+  // }, []);
   
 
   return (

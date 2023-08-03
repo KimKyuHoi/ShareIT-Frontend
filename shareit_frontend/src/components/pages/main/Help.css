@@ -1,0 +1,7 @@
+.helpPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+    margin: 4rem;
+}

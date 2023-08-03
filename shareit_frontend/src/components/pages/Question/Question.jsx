@@ -7,9 +7,16 @@ import {
   faArrowRight,
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Question() {
+  const navigate = useNavigate();
+
+  const onClickBack = () => {
+    navigate("/");
+}
+
   return (
     <>
       <div
@@ -24,7 +31,7 @@ export default function Question() {
                 <span className="header-text content-text">Share IT</span>
               </div>
               <div className="header-container">
-                <FontAwesomeIcon icon={faArrowLeft} />
+                <FontAwesomeIcon icon={faArrowLeft} onClick={onClickBack}/>
                 <FontAwesomeIcon icon={faArrowRight} />
                 <FontAwesomeIcon icon={faArrowsRotate} />
                 <div className="header-link-background">
