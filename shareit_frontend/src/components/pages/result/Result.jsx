@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import styles from "./Result.module.css";
 // import Printer from "../../../assets/Printer.png";
 import frontendTitle from "../../../assets/FrontendTitle.png";
@@ -7,7 +7,7 @@ import frontendPrinter from "../../../assets/FrontendPrinter.png";
 import frontendFlag from "../../../assets/FrontendFlag.png";
 import BackgroundImage from "../../../assets/background.png";
 import snsBtn from "../../../assets/SNSBtn.png";
-import ShowResult from "../../../service/ShowResult";
+// import ShowResult from "../../../service/ShowResult";
 
 const DUMMY_DATA = [
   {

@@ -129,21 +129,20 @@
     min-width: 1004px;
   }
   .printer {
-    width: 30vw;
+    width: 25vw;
     height: auto !important;
-    max-height: 480px;
-    max-width: 600px;
+    max-width: 580px;
     z-index: 7;
   }
   .flags {
-    width: 30vw;
+    width: 27vw;
     max-width: 400px;
     max-height: 332px;
   }
   .sns {
-    width: 16vw;
+    width: 13vw;
     max-width: 250px;
-    margin-top: 6vh;
+    margin-top: 1vh;
     margin-left: 8vw;
   }
 }
