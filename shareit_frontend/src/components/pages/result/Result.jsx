@@ -30,11 +30,11 @@ const Result = () => {
       </header>
       <main className={styles.contentBox}>
         {DUMMY_DATA.map((data) => (
-          <img src={data.printer} alt={data.title} className={styles.printer}/>
+          <img src={data.printer} alt={data.title} className={styles.printer} />
         ))}
         <div className={styles.etcBox}>
           {DUMMY_DATA.map((data) => (
-            <img src={data.flags} alt={data.title} className={styles.flags}/>
+            <img src={data.flags} alt={data.title} className={styles.flags} />
           ))}
           <img src={snsBtn} alt="공유 이미지입니다." className={styles.sns} />
         </div>
