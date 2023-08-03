@@ -10,7 +10,7 @@ import {
     faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Contributor.css";
-
+import { motion } from "framer-motion";
 
 const Contributor = () => {
 
@@ -21,7 +21,12 @@ const Contributor = () => {
     }
 
     return (
-        <>
+        <motion.div
+         initial={{opacity: 0}}
+         animate={{opacity: 1}}
+         exit={{opacity: 0}}
+         transition={{duration: 0.6}}
+         >
             <div
                 className="backGroundImg"
                 style={{ backgroundImage: `url(${BackgroundImage})` }}
@@ -63,7 +68,7 @@ const Contributor = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </motion.div>
     )
 }
 

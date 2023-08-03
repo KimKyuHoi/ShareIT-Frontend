@@ -8,6 +8,7 @@ import {
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 
 export default function Question() {
@@ -15,10 +16,15 @@ export default function Question() {
 
   const onClickBack = () => {
     navigate("/");
-}
+  }
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.6 }}
+    >
       <div
         className="backGroundImg"
         style={{ backgroundImage: `url(${BackgroundImage})` }}
@@ -31,7 +37,7 @@ export default function Question() {
                 <span className="header-text content-text">Share IT</span>
               </div>
               <div className="header-container">
-                <FontAwesomeIcon icon={faArrowLeft} onClick={onClickBack}/>
+                <FontAwesomeIcon icon={faArrowLeft} onClick={onClickBack} />
                 <FontAwesomeIcon icon={faArrowRight} />
                 <FontAwesomeIcon icon={faArrowsRotate} />
                 <div className="header-link-background">
@@ -84,6 +90,6 @@ export default function Question() {
           </div>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 }

@@ -14,6 +14,7 @@ import Start from "../../../assets/Start.png";
 import Help from "../../../assets/Help.png";
 import Contributor from "../../../assets/Contributor.png";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -33,7 +34,12 @@ const Main = () => {
 
 
   return (
-    <>
+    <motion.div
+         initial={{opacity: 0}}
+         animate={{opacity: 1, rotateZ: 360}}
+         exit={{opacity: 0}}
+         transition={{duration: 0.6}}
+         >
       <div
         className="backGroundImg"
         style={{ backgroundImage: `url(${BackgroundImage})` }}
@@ -71,7 +77,7 @@ const Main = () => {
           </div>
         </div>
       </div>
-    </>
+    </motion.div>
   )
 }
 

@@ -8,6 +8,8 @@ import frontendFlag from "../../../assets/FrontendFlag.png";
 import BackgroundImage from "../../../assets/background.png";
 import snsBtn from "../../../assets/SNSBtn.png";
 // import ShowResult from "../../../service/ShowResult";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const DUMMY_DATA = [
   {
@@ -23,6 +25,7 @@ const Result = () => {
   // const [title, setTitle] = useState("");
   // const [printer, setPrinter] = useState("");
   // const [flags, setFlags] = useState("");
+  const navigate = useNavigate();
 
   // useEffect(() => {
   //   ShowResult().then((data)=>{
@@ -33,17 +36,25 @@ const Result = () => {
   //     console.log(error);
   //   });
   // }, []);
-  
+
+  const onClickBack = () => {
+    navigate("/");
+  }
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{duration: 0.6}}
+      className={styles.container}>
       <div
         className={styles.backGroundImg}
         style={{ backgroundImage: `url(${BackgroundImage})` }}
       />
       <header className={styles.titleBox}>
         {DUMMY_DATA.map((data) => (
-          <img src={data.title} alt={data.title} className={styles.title} />
+          <img src={data.title} alt={data.title} className={styles.title} onClick={onClickBack}/>
         ))}
       </header>
       <main className={styles.contentBox}>
@@ -57,7 +68,8 @@ const Result = () => {
           <img src={snsBtn} alt="공유 이미지입니다." className={styles.sns} />
         </div>
       </main>
-    </div>
+
+    </motion.div>
   );
 };
 
