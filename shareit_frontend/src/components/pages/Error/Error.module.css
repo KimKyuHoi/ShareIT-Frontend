@@ -24,3 +24,22 @@
     color: white;
     text-shadow: 5px 5px 5px #687CD5;
 }
+
+.button {
+    border-radius: 20px;
+    border: 3px solid #687CD5;
+    box-shadow: 3px 3px 3px 3px #687CD5;
+    font-size: 0.8rem;
+    background-color: white;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    height: 40px;
+}
+
+.button:hover {
+    transition: all 0.5s;
+    scale: 1.05;
+}
