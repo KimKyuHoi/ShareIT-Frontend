@@ -1,0 +1,26 @@
+.Container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.backGroundImg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    height: 100vh;
+    z-index: -1;
+}
+
+.Error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 5px 5px 5px #687CD5;
+}
