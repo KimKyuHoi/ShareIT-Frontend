@@ -1,13 +1,13 @@
 import React from "react";
 import "./question.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import BackgroundImage from "../../../assets/MainBackground.png";
 import {
   faArrowLeft,
   faArrowRight,
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
 
-const BackgroundImage = "../img/BackgroundImage.png";
 
 export default function Question() {
   return (
@@ -20,7 +20,7 @@ export default function Question() {
           <div className="Question-wrapper">
             <div className="Question-header  Question-background-header">
               <div className="header-page-background">
-                <img className="logo" src="./img/Lion.png" />
+                <img className="logo" alt="사자이미지입니다." src="./img/Lion.png" />
                 <span className="header-text content-text">Share IT</span>
               </div>
               <div className="header-container">
