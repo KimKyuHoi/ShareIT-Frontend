@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import styles from "./Result.module.css";
 // import Printer from "../../../assets/Printer.png";
 import frontendTitle from "../../../assets/FrontendTitle.png";
@@ -6,6 +7,7 @@ import frontendPrinter from "../../../assets/FrontendPrinter.png";
 import frontendFlag from "../../../assets/FrontendFlag.png";
 import BackgroundImage from "../../../assets/background.png";
 import snsBtn from "../../../assets/SNSBtn.png";
+import ShowResult from "../../../service/ShowResult";
 
 const DUMMY_DATA = [
   {
@@ -16,7 +18,23 @@ const DUMMY_DATA = [
   },
 ];
 
+
 const Result = () => {
+  const [title, setTitle] = useState("");
+  const [printer, setPrinter] = useState("");
+  const [flags, setFlags] = useState("");
+
+  useEffect(() => {
+    ShowResult().then((data)=>{
+      setTitle(data.title);
+      setPrinter(data.printer);
+      setFlags(data.flags);
+    }).catch((error)=>{
+      console.log(error);
+    });
+  }, []);
+  
+
   return (
     <div className={styles.container}>
       <div
