@@ -1,0 +1,459 @@
+$viewportWidth: 1024px;
+$viewportHeight: 768px;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.aligncenter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@function toVh($value, $viewportHeight) {
+  @return (100 / $viewportHeight) * $value * 1vh;
+}
+
+@function toVw($value, $viewportWidth) {
+  @return (100 / $viewportWidth) * $value * 1vw;
+}
+
+/* Question-wrapper */
+$question-wrapper-width: 696px;
+$question-wrapper-height: 432.83px;
+
+
+$question-wrapper-width-vw: toVw($question-wrapper-width, $viewportWidth);
+$question-wrapper-height-vh: toVh($question-wrapper-height, $viewportHeight);
+
+/* Question-content */
+$question-content-height: 376.83px;
+
+/* Question-backgroud */
+$question-background-height: 376.83px;
+$question-background-border-width: 3px;
+
+/* Question-answer-right */
+$question-answer-right-width: 246px;
+$question-answer-right-height: 128.71px;
+
+/* Question-answer-left */
+$question-answer-left-width: 247px;
+$question-answer-left-height: 129px;
+
+/* bar */
+$bar-width: 500px;
+$bar-height: 20px;
+
+/* bar-progress  12단계가 있음 stage를 바꾸면 된다*/
+$stage: 12;
+$bar-width-vw : toVw(505px, $viewportWidth);
+$bar-progress-width: $bar-width-vw/12 * $stage;
+$bar-progress-height: 8px;
+
+/* Question-text */
+$question-text-height: 53px;
+
+/* Question-answer-text */
+$question-answer-text-height: 70px;
+
+/* Question-answer-text */
+$question-answer-text-width: 185px;
+$question-answer-text-height: 39px;
+
+/* Lion */
+$lion-width: 100px;
+$lion-height: 100px;
+
+/* Question-progress-text */
+$question-progress-text-width: 53px;
+$question-progress-text-height: 43px;
+
+/* Question-header */
+$question-header-height: 57.17px;
+
+/* Question-background */
+$question-background-header-height: 57.17px;
+$question-background-header-border-width: 3px;
+
+/* header-background */
+$header-background-height: 28px;
+
+/* header-link-background */
+$header-link-background-height: 17px;
+
+/* header-page-background */
+$header-page-background-width: 97px;
+$header-page-background-height: 25px;
+
+/* header-text */
+$header-text-height: 14px;
+
+/* header-text */
+$header-text-width: 60px;
+$header-text-height: 18px;
+
+/* IconLion */
+$icon-lion-width: 18px;
+$icon-lion-height: 18px;
+
+/* SCSS styles */
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-border: #000000;
+$color-background: #FFFFFF;
+$color-bar-progress: #FEACA5;
+$color-question-background: #7C93F9;
+$color-header-link-background: #E5E5E5;
+$color-vector: #8B95A1;
+
+.content-text{
+  font-family: 'DungGeunMo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 150%;
+
+  text-align: center;
+  color: $color-black;
+}
+
+.header-container{
+  width:100%;
+  height: 28px;
+
+  align-items: center;
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  border-width: 1px 0 1px 0px;
+  border-style: solid;
+  border-color: #E5E5E5 #000000 #E5E5E5 #000000;
+
+  padding: 10px 8px;
+  gap: 7px;
+  
+  background-color: #ffffff;
+  color: #8B95A1;
+  box-sizing: border-box;
+  .svg{
+    background: none;
+    color: #8B95A1;
+  }
+}
+
+
+.header-text{
+position: relative;
+width: 60px;
+text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+font-size: 10px;
+
+/* or 15px */
+
+color: #000000;
+}
+
+
+.link{
+  position: absolute;
+}
+
+.Question-background{
+  // overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+
+}
+
+/* Question-wrapper */
+.Question-wrapper {
+  position: relative;
+  width: $question-wrapper-width-vw;
+  height: $question-wrapper-height-vh;
+
+  max-width: 696px;
+  min-height: 432px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+/* Question-content */
+.Question-content {
+  position: relative;
+  // width:$question-wrapper-width-vw;
+  width: 100%;
+  height: 100%;
+}
+
+/* Question-background header*/
+.Question-background-header {
+  box-sizing: border-box;
+  // width: $question-wrapper-width-vw;
+  width: 100%;
+  height: $question-header-height;
+  background: $color-question-background;
+  border-width: 3px;
+  border-style: solid;
+  border-color: $color-border;
+  border-radius: 20px 20px 0px 0px;
+}
+
+/* Question-answer-right */
+.Question-answer-right {
+  position: absolute;
+  width: $question-answer-right-width;
+  height: $question-answer-right-height;
+  //background: url(speech.png);
+}
+
+/* Question-answer-left */
+.Question-answer-left {
+  position: absolute;
+  width: $question-answer-left-width;
+  height: $question-answer-left-height;
+  //background: url(speech.png);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+/* bar */
+.bar {
+  box-sizing: border-box;
+
+  position: absolute;
+  
+  width:  toVw(505px, $viewportWidth);
+  
+  max-width: 500px;
+  height: toVh(17px, $viewportHeight);
+
+  top: 107px;
+  
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 7px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* bar-progress */
+.bar-progress {
+  position: absolute;
+  width:$bar-progress-width;
+  max-width: 496px;
+  height: 100%;
+  background: $color-bar-progress;
+}
+
+/* Question-text */
+.Question-text {
+  position: absolute; 
+  height: $question-text-height;
+  font-size: 20px;
+  top: 143px ;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: $color-black;
+}
+
+/* Question-progress-text */
+.Question-progress-text {
+  position: absolute;
+  width: $question-progress-text-width;
+  height: $question-progress-text-height;
+
+  //right: 316px;
+  top: 64px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: $color-black;
+}
+
+/* Question-header */
+.Question-header {
+   position: absolute;
+  // width: $question-wrapper-width-vw;
+  // height: $question-header-height-vh;
+}
+
+/* Lion */
+.Lion {
+  position: absolute;
+  width: $lion-width;
+  height: $lion-height;
+
+  bottom: 0px;
+  left: calc(50% - 50px);
+}
+
+/* Question-background */
+.Question-background-content {
+  box-sizing: border-box;
+  // width: $question-wrapper-width;
+  // height: $question-background-header-height;
+  top: 57.17px;
+  background: #FFFFFF;
+  border-width: 0px 3px 3px 3px;
+  border-style: solid;
+  border-color: $color-border;
+  border-radius: 0px 0px 20px 20px;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* header-background */
+.header-background {
+  box-sizing: border-box;
+  position: absolute;
+  width: $header-background-height;
+  height: $header-background-height;
+}
+
+/* header-link-background */
+.header-link-background {
+  box-sizing: border-box;
+  position: relative;
+  // width: $question-wrapper-width-vw;
+  width: 100%;
+  height: $header-link-background-height;
+  background: $color-header-link-background;
+  border-radius: 10px;
+  padding: 0 13px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* header-page-background */
+.header-page-background {
+  position: absolute;
+  bottom: 28px;
+  width: $header-page-background-width;
+  height: $header-page-background-height;
+  background: #FFFFFF;
+  border-radius: 8px 8px 0px 0px;
+
+  display: flex;
+}
+
+.Question-answer-leftimg{
+  position: absolute;
+  height: 128.71px;
+  width: auto;
+  bottom: calc(10%);
+  // top: calc(50% + 40px);
+  right: calc(50% + 10px);
+
+}
+.Question-answer-rightimg{
+  position: absolute;
+  height: 128.71px;
+  width: auto;
+  bottom: calc(10%);
+  left: calc(50% + 10px);
+}
+
+
+/* Question-answer-text */
+.Question-answer-text-left {
+  position: absolute;
+  width: $question-answer-text-width;
+  height: $question-answer-text-height;
+
+  bottom: calc(10% + 65px);
+  right: calc(50% + 48px);
+
+
+  font-size: 16px;
+}
+
+/* Question-answer-text */
+.Question-answer-text-right {
+  position: absolute;
+  width: $question-answer-text-width;
+  height: $question-answer-text-height;
+
+  bottom: calc(10% + 65px);
+  left: calc(50% + 48px);
+
+  font-size: 16px;
+}
+
+.logo{
+  position: relative;
+  width: 18px;
+  height: 18px;
+  top: 4px;
+  left: 3px;
+}
+
+.backGroundImg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 100vh;
+  z-index: -1;
+}
+
+
+//말풍선이 커서 768px하면 튀어나오네요.
+@media screen and (max-width: 768px) {
+  .Question-wrapper {
+    width: 95vw;
+    height: 376.83px;
+    min-height: 50vw;
+  }
+
+  .Question-answer-leftimg{
+    height: 70px;
+    bottom: calc(10%);
+    right: calc(50% + 10px);
+  
+  }
+  .Question-answer-rightimg{
+    height: 70px;
+    bottom: calc(10%);
+    left: calc(50% + 10px);
+  }
+
+  .Question-answer-text-left {
+    width: $question-answer-text-width*0.65;
+    height: $question-answer-text-height;
+    right: calc(50% + 20px);
+    font-size: 10px;
+    bottom: 30px;
+  }
+  
+  /* Question-answer-text */
+  .Question-answer-text-right {
+    width: $question-answer-text-width*0.65;
+    height: $question-answer-text-height;
+    left: calc(50% + 20px);
+    font-size: 10px;
+    bottom: 30px;
+  }
+
+}
