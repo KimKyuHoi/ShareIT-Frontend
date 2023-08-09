@@ -61,6 +61,48 @@ export default function Question() {
   const [isClicked, setIsClicked] = useState(false); // 클릭 여부를 state로 관리
   const [stage, setStage] = useState(1);
 
+  const [walking, setWalking] = useState(false); // 걷는 이미지를 보여줄지 여부
+  const [motion, setMotion] = useState(false); // true: walking, false: standing
+  const [Lmotion, setLMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
+  const [Rmotion, setRMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
+  const [position, setPosition] = useState();
+
+  const toggleWalking = (direction) => {
+    if (direction === "Right") {
+      console.log("오른쪽이동");
+      setWalking((prevWalking) => 2);
+    } else if (direction === "Left") {
+      console.log("왼쪽이동");
+      setWalking((prevWalking) => 1);
+    }
+  };
+
+  useEffect(() => {
+    if (walking === 2 && position < 400) {
+      const interval = setInterval(() => {
+        setMotion((prevMotion) => !prevMotion);
+        // setRMotion((prevMotion) => !prevMotion);
+        // setLMotion((prevMotion) => false);
+        setPosition((prevPosition) => prevPosition + 10);
+      }, 100);
+
+      return () => {
+        clearInterval(interval);
+      };
+    } else if (walking === 1 && position > 150) {
+      const interval = setInterval(() => {
+        setMotion((prevMotion) => !prevMotion);
+        // setLMotion((prevMotion) => !prevMotion);
+        // setRMotion((prevMotion) => false);
+        setPosition((prevPosition) => prevPosition - 10);
+      }, 100);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [walking, position]);
+
   const [question, setQuestion] = useState("test");
   const [answer_left, setAnswerL] = useState("test");
   const [answer_right, setAnswerR] = useState("test");
@@ -79,7 +121,7 @@ export default function Question() {
   };
 
   const handleImageClick = (event) => {
-    console.log("이미지클릭");
+    console.log("이미지클릭됨");
     event.stopPropagation();
   };
 
@@ -158,7 +200,10 @@ export default function Question() {
 
               <button
                 className="Question-answer-left"
-                onClick={(event) => handleStage(event)}
+                onClick={(event) => {
+                  handleStage(event);
+                  toggleWalking("Left");
+                }}
               >
                 <img
                   className=" Question-answer-leftimg"
@@ -174,7 +219,10 @@ export default function Question() {
 
               <button
                 className="Question-answer-right"
-                onClick={(event) => handleStage(event)}
+                onClick={(event) => {
+                  handleStage(event);
+                  toggleWalking("Right");
+                }}
               >
                 <img
                   className=" Question-answer-rightimg"
@@ -186,10 +234,26 @@ export default function Question() {
                   {AnswersR[stage]}
                 </span>
               </button>
+
               <img
-                className="Lion"
-                src="./img/likelion_lion_basic.gif"
-                alt="Lion"
+                className={`Lion image ${motion ? "walking" : ""}`}
+                src={
+                  walking === 1
+                    ? motion
+                      ? "./img/likelion_lion_runLeft.png"
+                      : "./img/likelion_lion_basicL.gif"
+                    : walking === 2 && motion
+                    ? "./img/likelion_lion_runRight.png"
+                    : "./img/likelion_lion_basicR.gif"
+                }
+                alt={
+                  motion
+                    ? walking === "Left"
+                      ? "walking left"
+                      : "walking right"
+                    : "standing"
+                }
+                style={{ left: `${position}px` }}
               />
             </div>
           </div>
