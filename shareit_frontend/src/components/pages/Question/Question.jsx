@@ -72,9 +72,15 @@ export default function Question() {
     // setAnswerR("새로운 언어나 도구에 도전해보는 것을 좋아한다");
   }, []);
 
-  const handleStage = () => {
+  const handleStage = (event) => {
     console.log(stage);
+    event.stopPropagation();
     setStage((prevStage) => (prevStage < 12 ? prevStage + 1 : prevStage));
+  };
+
+  const handleImageClick = (event) => {
+    console.log("이미지클릭");
+    event.stopPropagation();
   };
 
   const handleClick = (index) => {
@@ -151,13 +157,14 @@ export default function Question() {
               </span>
 
               <button
-                className="Question-answer-left aligncenter"
-                onClick={handleStage}
+                className="Question-answer-left"
+                onClick={(event) => handleStage(event)}
               >
                 <img
                   className=" Question-answer-leftimg"
                   src="./img/Question-answer-left.png"
                   alt="left"
+                  onClick={(event) => handleImageClick(event)}
                 ></img>
                 <span className="Question-answer-text-left content-text">
                   {" "}
@@ -165,11 +172,15 @@ export default function Question() {
                 </span>
               </button>
 
-              <button className="Question-answer-right" onClick={handleStage}>
+              <button
+                className="Question-answer-right"
+                onClick={(event) => handleStage(event)}
+              >
                 <img
                   className=" Question-answer-rightimg"
                   src="./img/Question-answer-right.png "
                   alt="right"
+                  onClick={(event) => handleImageClick(event)}
                 ></img>
                 <span className="Question-answer-text-right content-text">
                   {AnswersR[stage]}
