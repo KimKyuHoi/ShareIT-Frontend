@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 $viewportWidth: 1024px;
 $viewportHeight: 768px;
 
@@ -5,6 +12,7 @@ $viewportHeight: 768px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'DungGeunMo'; //local
 }
 
 .aligncenter{
@@ -112,7 +120,7 @@ $color-header-link-background: #E5E5E5;
 $color-vector: #8B95A1;
 
 .content-text{
-  font-family: 'DungGeunMo';
+  // font-family: 'DungGeunMo';
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -348,7 +356,7 @@ color: #000000;
 /* header-page-background */
 .header-page-background {
   position: absolute;
-  bottom: 28px;
+  left: 9px;
   width: $header-page-background-width;
   height: $header-page-background-height;
   background: #FFFFFF;

@@ -1,15 +1,113 @@
-import React from "react";
-import "../styles/question.scss";
+import React, { useState, useEffect } from "react";
+import "./question.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import BackgroundImage from "../../../assets/MainBackground.png";
 import {
   faArrowLeft,
   faArrowRight,
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
 
-const BackgroundImage = "../img/BackgroundImage.png";
-
 export default function Question() {
+  const Questions = [
+    "질문없음",
+    "질문1",
+    "질문2",
+    "질문3",
+    "질문4",
+    "질문5",
+    "질문6",
+    "질문7",
+    "질문8",
+    "질문9",
+    "질문10",
+    "질문11",
+    "질문12",
+    "보너스질문",
+  ];
+  const AnswersL = [
+    "질문없음",
+    "답변1",
+    "답변2",
+    "답변3",
+    "답변4",
+    "답변5",
+    "답변6",
+    "답변7",
+    "답변8",
+    "답변9",
+    "답변10",
+    "답변11",
+    "답변12",
+    "보너스답변",
+  ];
+
+  const AnswersR = [
+    "질문없음",
+    "답변1",
+    "답변2",
+    "답변3",
+    "답변4",
+    "답변5",
+    "답변6",
+    "답변7",
+    "답변8",
+    "답변9",
+    "답변10",
+    "답변11",
+    "답변12",
+    "보너스답변",
+  ];
+  const [isClicked, setIsClicked] = useState(false); // 클릭 여부를 state로 관리
+  const [stage, setStage] = useState(1);
+
+  const [question, setQuestion] = useState("test");
+  const [answer_left, setAnswerL] = useState("test");
+  const [answer_right, setAnswerR] = useState("test");
+
+  useEffect(() => {
+    // setQuestion(" 프로그래밍을 할 때, 어떤 언어나 도구를 선호하나요?");
+    // setQuestion(Questions[0]);
+    // setAnswerL("이미 익숙한 언어나 도구를 사용한다");
+    // setAnswerR("새로운 언어나 도구에 도전해보는 것을 좋아한다");
+  }, []);
+
+  const handleStage = () => {
+    console.log(stage);
+    setStage((prevStage) => (prevStage < 12 ? prevStage + 1 : prevStage));
+  };
+
+  const handleClick = (index) => {
+    if (isClicked) {
+      setIsClicked(false); // 초기 상태 false 일 땐 초기 상태 이미지 src
+    } else {
+      setIsClicked(true); // true일 땐 변경될 이미지 src
+    }
+  };
+
+  function handleClickLeft(index) {
+    // Check if the index is valid
+    if (index >= 0 && index < AnswersL.length) {
+      const loadedValue = AnswersL[index];
+      console.log("Loaded value:", loadedValue);
+      // setAnswerL(loadedValue);
+      // You can now use the loadedValue as needed
+    } else {
+      console.log("Invalid index");
+    }
+  }
+
+  function handleClickRight(index) {
+    // Check if the index is valid
+    if (index >= 0 && index < AnswersR.length) {
+      const loadedValue = AnswersR[index];
+      console.log("Loaded right value:", loadedValue);
+      // setAnswerR(loadedValue);
+    } else {
+      console.log("Invalid right index");
+    }
+  }
+
   return (
     <>
       <div
@@ -20,7 +118,11 @@ export default function Question() {
           <div className="Question-wrapper">
             <div className="Question-header  Question-background-header">
               <div className="header-page-background">
-                <img className="logo" src="./img/Lion.png" />
+                <img
+                  className="logo"
+                  alt="사자이미지입니다."
+                  src="./img/Lion.png"
+                />
                 <span className="header-text content-text">Share IT</span>
               </div>
               <div className="header-container">
@@ -36,17 +138,22 @@ export default function Question() {
             </div>
 
             <div className="Question-content Question-background-content">
-              <span className="Question-progress-text content-text">1/12</span>
+              <span className="Question-progress-text content-text">
+                {stage}
+              </span>
 
               <div className="bar">
                 <div className="bar-progress" />
               </div>
 
               <span className="Question-text content-text">
-                프로그래밍을 할 때, 어떤 언어나 도구를 선호하나요?
+                {Questions[stage]}
               </span>
 
-              <div className="aligncenter Question-answer-leftimg">
+              <button
+                className="Question-answer-left aligncenter"
+                onClick={handleStage}
+              >
                 <img
                   className=" Question-answer-leftimg"
                   src="./img/Question-answer-left.png"
@@ -54,20 +161,23 @@ export default function Question() {
                 ></img>
                 <span className="Question-answer-text-left content-text">
                   {" "}
-                  이미 익숙한 언어나 도구를 사용한다.
+                  {AnswersL[stage]}
                 </span>
-              </div>
+              </button>
 
-              <div className="aligncenter Question-answer-rightimg">
+              <button
+                className="Question-answer-right"
+                onClick={handleStage}
+              >
                 <img
                   className=" Question-answer-rightimg"
                   src="./img/Question-answer-right.png "
                   alt="right"
                 ></img>
                 <span className="Question-answer-text-right content-text">
-                  새로운 언어나 도구에 도전해보는 것을 좋아한다.
+                  {AnswersR[stage]}
                 </span>
-              </div>
+              </button>
               <img
                 className="Lion"
                 src="./img/likelion_lion_basic.gif"
