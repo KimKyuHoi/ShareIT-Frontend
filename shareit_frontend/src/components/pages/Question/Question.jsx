@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./question.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackgroundImage from "../../../assets/MainBackground.png";
@@ -65,7 +65,12 @@ export default function Question() {
   const [motion, setMotion] = useState(false); // true: walking, false: standing
   const [Lmotion, setLMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
   const [Rmotion, setRMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
-  const [position, setPosition] = useState();
+  const [position, setPosition] = useState(0);
+
+  const [Lposition, setLposition] = useState(0);
+  const [Rposition, setRposition] = useState(0);
+  const lionRef = useRef(null); // .Lion 요소의 ref
+  const wrapperRef = useRef(null); // .wapper 요소의 ref
 
   const toggleWalking = (direction) => {
     if (direction === "Right") {
@@ -78,7 +83,7 @@ export default function Question() {
   };
 
   useEffect(() => {
-    if (walking === 2 && position < 400) {
+    if (walking === 2 && position < Rposition) {
       const interval = setInterval(() => {
         setMotion((prevMotion) => !prevMotion);
         // setRMotion((prevMotion) => !prevMotion);
@@ -89,7 +94,7 @@ export default function Question() {
       return () => {
         clearInterval(interval);
       };
-    } else if (walking === 1 && position > 150) {
+    } else if (walking === 1 && position > Lposition) {
       const interval = setInterval(() => {
         setMotion((prevMotion) => !prevMotion);
         // setLMotion((prevMotion) => !prevMotion);
@@ -106,6 +111,20 @@ export default function Question() {
   const [question, setQuestion] = useState("test");
   const [answer_left, setAnswerL] = useState("test");
   const [answer_right, setAnswerR] = useState("test");
+
+  useEffect(() => {
+    const lionElement = lionRef.current;
+    const wrapperElement = wrapperRef.current;
+    if (lionElement && position === 0) {
+      const lionRect = lionElement.getBoundingClientRect();
+      const wrapperRect = wrapperElement.getBoundingClientRect(); // 수정된 부분
+      const initialPosition = wrapperRect.width / 2 - lionRect.width / 2;
+      console.log("Lion의 초기 위치:", initialPosition);
+      setPosition(initialPosition);
+      setLposition(initialPosition - 100);
+      setRposition(initialPosition + 100);
+    }
+  }, [position]);
 
   useEffect(() => {
     // setQuestion(" 프로그래밍을 할 때, 어떤 언어나 도구를 선호하나요?");
@@ -163,7 +182,7 @@ export default function Question() {
         style={{ backgroundImage: `url(${BackgroundImage})` }}
       >
         <div className="Question-background">
-          <div className="Question-wrapper">
+          <div className="Question-wrapper" ref={wrapperRef}>
             <div className="Question-header  Question-background-header">
               <div className="header-page-background">
                 <img
@@ -236,6 +255,7 @@ export default function Question() {
               </button>
 
               <img
+                ref={lionRef}
                 className={`Lion image ${motion ? "walking" : ""}`}
                 src={
                   walking === 1
