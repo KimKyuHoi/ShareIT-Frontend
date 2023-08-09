@@ -70,7 +70,7 @@ $question-text-height: 53px;
 $question-answer-text-height: 70px;
 
 /* Question-answer-text */
-$question-answer-text-width: 200px;
+$question-answer-text-width: 210px;
 $question-answer-text-height: 71px;
 
 /* Lion */
@@ -360,6 +360,8 @@ color: #000000;
   justify-content: center;
   align-items: center;
 
+  background: none;
+  border: none;
 }
 
 /* Question-answer-left */
@@ -369,11 +371,14 @@ color: #000000;
   height: $question-answer-left-height;
   bottom: calc(10%);
   right: calc(50% + 10px);
-
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: none;
+  border: none;
+
 }
 
 .Question-answer-leftimg{
@@ -432,30 +437,38 @@ color: #000000;
     height: 376.83px;
     min-height: 50vw;
   }
+  .Question-answer-right{
+    width: 134px;
+    height: 100px;
+  }
+
+  .Question-answer-left{
+    width: 134px;
+    height: 100px;
+  }
 
   .Question-answer-leftimg{
     height: 70px;
-
-  
   }
   .Question-answer-rightimg{
     height: 70px;
   }
 
   .Question-answer-text-left {
-    width: $question-answer-text-width*0.65;
-    height: $question-answer-text-height;
+    width: 130px;
+    height: 40px;
+
     font-size: 10px;
-    top: 2px;
+    top: 25px;
     background: none;
   }
   
   /* Question-answer-text */
   .Question-answer-text-right {
-    width: $question-answer-text-width*0.65;
-    height: $question-answer-text-height;
+    width: 130px;
+    height: 50px;
     font-size: 10px;
-    top: 2px;
+    top: 25px;
   }
 
 }
