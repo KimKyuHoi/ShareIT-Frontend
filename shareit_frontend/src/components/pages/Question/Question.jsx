@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./question.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackgroundImage from "../../../assets/MainBackground.png";
@@ -7,37 +7,193 @@ import {
   faArrowRight,
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-
 
 export default function Question() {
-  const navigate = useNavigate();
+  const Questions = [
+    "질문없음",
+    "질문1",
+    "질문2",
+    "질문3",
+    "질문4",
+    "질문5",
+    "질문6",
+    "질문7",
+    "질문8",
+    "질문9",
+    "질문10",
+    "질문11",
+    "질문12",
+    "보너스질문",
+  ];
+  const AnswersL = [
+    "질문없음",
+    "답변1",
+    "답변2",
+    "답변3",
+    "답변4",
+    "답변5",
+    "답변6",
+    "답변7",
+    "답변8",
+    "답변9",
+    "답변10",
+    "답변11",
+    "답변12",
+    "보너스답변",
+  ];
 
-  const onClickBack = () => {
-    navigate("/");
+  const AnswersR = [
+    "질문없음",
+    "답변1",
+    "답변2",
+    "답변3",
+    "답변4",
+    "답변5",
+    "답변6",
+    "답변7",
+    "답변8",
+    "답변9",
+    "답변10",
+    "답변11",
+    "답변12",
+    "보너스답변",
+  ];
+  const [isClicked, setIsClicked] = useState(false); // 클릭 여부를 state로 관리
+  const [stage, setStage] = useState(1);
+
+  const [walking, setWalking] = useState(false); // 걷는 이미지를 보여줄지 여부
+  const [motion, setMotion] = useState(false); // true: walking, false: standing
+  const [Lmotion, setLMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
+  const [Rmotion, setRMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
+  const [position, setPosition] = useState(0);
+
+  const [Lposition, setLposition] = useState(0);
+  const [Rposition, setRposition] = useState(0);
+  const lionRef = useRef(null); // .Lion 요소의 ref
+  const wrapperRef = useRef(null); // .wapper 요소의 ref
+
+  const toggleWalking = (direction) => {
+    if (direction === "Right") {
+      console.log("오른쪽이동");
+      setWalking((prevWalking) => 2);
+    } else if (direction === "Left") {
+      console.log("왼쪽이동");
+      setWalking((prevWalking) => 1);
+    }
+  };
+
+  useEffect(() => {
+    if (walking === 2 && position < Rposition) {
+      const interval = setInterval(() => {
+        setMotion((prevMotion) => !prevMotion);
+        // setRMotion((prevMotion) => !prevMotion);
+        // setLMotion((prevMotion) => false);
+        setPosition((prevPosition) => prevPosition + 10);
+      }, 100);
+
+      return () => {
+        clearInterval(interval);
+      };
+    } else if (walking === 1 && position > Lposition) {
+      const interval = setInterval(() => {
+        setMotion((prevMotion) => !prevMotion);
+        // setLMotion((prevMotion) => !prevMotion);
+        // setRMotion((prevMotion) => false);
+        setPosition((prevPosition) => prevPosition - 10);
+      }, 100);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [walking, position]);
+
+  const [question, setQuestion] = useState("test");
+  const [answer_left, setAnswerL] = useState("test");
+  const [answer_right, setAnswerR] = useState("test");
+
+  useEffect(() => {
+    const lionElement = lionRef.current;
+    const wrapperElement = wrapperRef.current;
+    if (lionElement && position === 0) {
+      const lionRect = lionElement.getBoundingClientRect();
+      const wrapperRect = wrapperElement.getBoundingClientRect(); // 수정된 부분
+      const initialPosition = wrapperRect.width / 2 - lionRect.width / 2;
+      console.log("Lion의 초기 위치:", initialPosition);
+      setPosition(initialPosition);
+      setLposition(initialPosition - 100);
+      setRposition(initialPosition + 100);
+    }
+  }, [position]);
+
+  useEffect(() => {
+    // setQuestion(" 프로그래밍을 할 때, 어떤 언어나 도구를 선호하나요?");
+    // setQuestion(Questions[0]);
+    // setAnswerL("이미 익숙한 언어나 도구를 사용한다");
+    // setAnswerR("새로운 언어나 도구에 도전해보는 것을 좋아한다");
+  }, []);
+
+  const handleStage = (event) => {
+    console.log(stage);
+    event.stopPropagation();
+    setStage((prevStage) => (prevStage < 12 ? prevStage + 1 : prevStage));
+  };
+
+  const handleImageClick = (event) => {
+    console.log("이미지클릭됨");
+    event.stopPropagation();
+  };
+
+  const handleClick = (index) => {
+    if (isClicked) {
+      setIsClicked(false); // 초기 상태 false 일 땐 초기 상태 이미지 src
+    } else {
+      setIsClicked(true); // true일 땐 변경될 이미지 src
+    }
+  };
+
+  function handleClickLeft(index) {
+    // Check if the index is valid
+    if (index >= 0 && index < AnswersL.length) {
+      const loadedValue = AnswersL[index];
+      console.log("Loaded value:", loadedValue);
+      // setAnswerL(loadedValue);
+      // You can now use the loadedValue as needed
+    } else {
+      console.log("Invalid index");
+    }
+  }
+
+  function handleClickRight(index) {
+    // Check if the index is valid
+    if (index >= 0 && index < AnswersR.length) {
+      const loadedValue = AnswersR[index];
+      console.log("Loaded right value:", loadedValue);
+      // setAnswerR(loadedValue);
+    } else {
+      console.log("Invalid right index");
+    }
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{duration: 1.6}}
-    >
+    <>
       <div
         className="backGroundImg"
         style={{ backgroundImage: `url(${BackgroundImage})` }}
       >
         <div className="Question-background">
-          <div className="Question-wrapper">
+          <div className="Question-wrapper" ref={wrapperRef}>
             <div className="Question-header  Question-background-header">
               <div className="header-page-background">
-                <img className="logo" alt="사자이미지입니다." src="./img/Lion.png" />
+                <img
+                  className="logo"
+                  alt="사자이미지입니다."
+                  src="./img/Lion.png"
+                />
                 <span className="header-text content-text">Share IT</span>
               </div>
               <div className="header-container">
-                <FontAwesomeIcon icon={faArrowLeft} onClick={onClickBack} />
+                <FontAwesomeIcon icon={faArrowLeft} />
                 <FontAwesomeIcon icon={faArrowRight} />
                 <FontAwesomeIcon icon={faArrowsRotate} />
                 <div className="header-link-background">
@@ -49,47 +205,80 @@ export default function Question() {
             </div>
 
             <div className="Question-content Question-background-content">
-              <span className="Question-progress-text content-text">1/12</span>
+              <span className="Question-progress-text content-text">
+                {stage}
+              </span>
 
               <div className="bar">
                 <div className="bar-progress" />
               </div>
 
               <span className="Question-text content-text">
-                프로그래밍을 할 때, 어떤 언어나 도구를 선호하나요?
+                {Questions[stage]}
               </span>
 
-              <div className="aligncenter Question-answer-leftimg">
+              <button
+                className="Question-answer-left"
+                onClick={(event) => {
+                  handleStage(event);
+                  toggleWalking("Left");
+                }}
+              >
                 <img
                   className=" Question-answer-leftimg"
                   src="./img/Question-answer-left.png"
                   alt="left"
+                  onClick={(event) => handleImageClick(event)}
                 ></img>
                 <span className="Question-answer-text-left content-text">
                   {" "}
-                  이미 익숙한 언어나 도구를 사용한다.
+                  {AnswersL[stage]}
                 </span>
-              </div>
+              </button>
 
-              <div className="aligncenter Question-answer-rightimg">
+              <button
+                className="Question-answer-right"
+                onClick={(event) => {
+                  handleStage(event);
+                  toggleWalking("Right");
+                }}
+              >
                 <img
                   className=" Question-answer-rightimg"
                   src="./img/Question-answer-right.png "
                   alt="right"
+                  onClick={(event) => handleImageClick(event)}
                 ></img>
                 <span className="Question-answer-text-right content-text">
-                  새로운 언어나 도구에 도전해보는 것을 좋아한다.
+                  {AnswersR[stage]}
                 </span>
-              </div>
+              </button>
+
               <img
-                className="Lion"
-                src="./img/likelion_lion_basic.gif"
-                alt="Lion"
+                ref={lionRef}
+                className={`Lion image ${motion ? "walking" : ""}`}
+                src={
+                  walking === 1
+                    ? motion
+                      ? "./img/likelion_lion_runLeft.png"
+                      : "./img/likelion_lion_basicL.gif"
+                    : walking === 2 && motion
+                    ? "./img/likelion_lion_runRight.png"
+                    : "./img/likelion_lion_basicR.gif"
+                }
+                alt={
+                  motion
+                    ? walking === "Left"
+                      ? "walking left"
+                      : "walking right"
+                    : "standing"
+                }
+                style={{ left: `${position}px` }}
               />
             </div>
           </div>
         </div>
       </div>
-    </motion.div>
+    </>
   );
 }
