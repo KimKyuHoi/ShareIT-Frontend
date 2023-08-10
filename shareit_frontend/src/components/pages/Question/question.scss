@@ -58,7 +58,7 @@ $bar-width: 500px;
 $bar-height: 20px;
 
 /* bar-progress  12단계가 있음 stage를 바꾸면 된다*/
-$stage: 12;
+$stage: 1;
 $bar-width-vw : toVw(505px, $viewportWidth);
 $bar-progress-width: $bar-width-vw/12 * $stage;
 $bar-progress-height: 8px;
