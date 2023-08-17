@@ -17,11 +17,11 @@
 }
 .start{
     cursor: pointer;
-    margin-left: 3vw;
+    margin-left: 4.4vw;
 }
 .help{
     cursor: pointer;
-    margin-left: 5vw;
+    margin-left: 5.2vw;
 }
 
 @media (max-width: 539px) {
