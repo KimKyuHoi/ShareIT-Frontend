@@ -245,7 +245,8 @@ color: #000000;
 /* bar-progress */
 .bar-progress {
   position: absolute;
-  width:$bar-progress-width;
+  width: calc(#{$bar-width-vw} / 12 * #{$bar-progress-width});
+  // width: $bar-width-vw / 12 * #{$stage};
   max-width: 496px;
   height: 100%;
   background: $color-bar-progress;

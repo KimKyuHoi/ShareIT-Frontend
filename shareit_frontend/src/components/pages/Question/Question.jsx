@@ -47,8 +47,9 @@ export default function Question() {
     "답변12",
     "보너스답변",
   ];
-  const [isClicked, setIsClicked] = useState(false); // 클릭 여부를 state로 관리
+  const [isClicked, setIsClicked] = useState(false);
   const [stage, setStage] = useState(1);
+  const barProgressWidth = (100 / 12) * stage;
 
   const [Questions, setQuestions] = useState([
     "질문없음",
@@ -67,16 +68,16 @@ export default function Question() {
     "보너스질문",
   ]);
 
-  const [walking, setWalking] = useState(false); // 걷는 이미지를 보여줄지 여부
-  const [motion, setMotion] = useState(false); // true: walking, false: standing
-  const [Lmotion, setLMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
-  const [Rmotion, setRMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
+  const [walking, setWalking] = useState(false);
+  const [motion, setMotion] = useState(false);
+  const [Lmotion, setLMotion] = useState(false);
+  const [Rmotion, setRMotion] = useState(false);
   const [position, setPosition] = useState(0);
 
   const [Lposition, setLposition] = useState(0);
   const [Rposition, setRposition] = useState(0);
-  const lionRef = useRef(null); // .Lion 요소의 ref
-  const wrapperRef = useRef(null); // .wapper 요소의 ref
+  const lionRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const toggleWalking = (direction) => {
     if (direction === "Right") {
@@ -209,7 +210,10 @@ export default function Question() {
               </span>
 
               <div className="bar">
-                <div className="bar-progress" />
+                <div
+                  className="bar-progress"
+                  style={{ width: `${barProgressWidth}%` }}
+                />
               </div>
 
               <span className="Question-text content-text">
