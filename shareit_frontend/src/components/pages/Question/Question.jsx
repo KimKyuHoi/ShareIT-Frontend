@@ -7,11 +7,40 @@ import {
   faArrowRight,
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+  useNavigate,
+} from "react-router-dom";
 // import JsonQuestionResource from "../../../apis/api";
 
 console.log("QuestionDataArray check");
 // const QuestionData = await JsonQuestionResource.fetchBooking();
 // const QuestionDataArray = await JsonQuestionResource.fetchBookingAry();
+
+function Modal({ showModal, setShowModal }) {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    setShowModal(false);
+    navigate("/result");
+  };
+
+  if (!showModal) {
+    return null;
+  }
+
+  return (
+    <div className="modal">
+      <div className="modal-content">
+        <button onClick={handleNavigate}>결과 보기</button>
+      </div>
+    </div>
+  );
+}
 
 export default function Question() {
   const AnswersL = [
@@ -76,6 +105,9 @@ export default function Question() {
 
   const [Lposition, setLposition] = useState(0);
   const [Rposition, setRposition] = useState(0);
+
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const lionRef = useRef(null);
   const wrapperRef = useRef(null);
 
@@ -136,7 +168,11 @@ export default function Question() {
   const handleStage = (event) => {
     console.log(stage);
     event.stopPropagation();
-    setStage((prevStage) => (prevStage < 12 ? prevStage + 1 : prevStage));
+    setStage((prevStage) => (prevStage < 13 ? prevStage + 1 : prevStage));
+    if (stage === 12) {
+      console.log("modal");
+      setShowModal(true);
+    }
   };
 
   const handleImageClick = (event) => {
@@ -205,6 +241,9 @@ export default function Question() {
             </div>
 
             <div className="Question-content Question-background-content">
+              {showModal && (
+                <Modal showModal={showModal} setShowModal={setShowModal} />
+              )}
               <span className="Question-progress-text content-text">
                 {stage}
               </span>

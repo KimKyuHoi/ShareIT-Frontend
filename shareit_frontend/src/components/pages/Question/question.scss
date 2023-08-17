@@ -476,3 +476,37 @@ color: #000000;
   }
 
 }
+
+.modal {
+  width: 150px;
+  height: auto; 
+
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  position: fixed; 
+  bottom: 0;
+  top: 100px;
+
+  background: none;
+  box-sizing: border-box;
+
+
+  button {
+    width: 150px;
+    background-color: #7871D1;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #9b94eb;
+    }
+  }
+
+}
