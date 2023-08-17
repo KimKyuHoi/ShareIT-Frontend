@@ -7,10 +7,40 @@ import {
   faArrowRight,
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
-import JsonQuestionResource from "../../../service/api";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+  useNavigate,
+} from "react-router-dom";
+// import JsonQuestionResource from "../../../apis/api";
+
 console.log("QuestionDataArray check");
 // const QuestionData = await JsonQuestionResource.fetchBooking();
 // const QuestionDataArray = await JsonQuestionResource.fetchBookingAry();
+
+function Modal({ showModal, setShowModal }) {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    setShowModal(false);
+    navigate("/result");
+  };
+
+  if (!showModal) {
+    return null;
+  }
+
+  return (
+    <div className="modal">
+      <div className="modal-content">
+        <button onClick={handleNavigate}>결과 보기</button>
+      </div>
+    </div>
+  );
+}
 
 export default function Question() {
   const AnswersL = [
@@ -46,8 +76,9 @@ export default function Question() {
     "답변12",
     "보너스답변",
   ];
-  const [isClicked, setIsClicked] = useState(false); // 클릭 여부를 state로 관리
+  const [isClicked, setIsClicked] = useState(false);
   const [stage, setStage] = useState(1);
+  const barProgressWidth = (100 / 12) * stage;
 
   const [Questions, setQuestions] = useState([
     "질문없음",
@@ -66,16 +97,19 @@ export default function Question() {
     "보너스질문",
   ]);
 
-  const [walking, setWalking] = useState(false); // 걷는 이미지를 보여줄지 여부
-  const [motion, setMotion] = useState(false); // true: walking, false: standing
-  const [Lmotion, setLMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
-  const [Rmotion, setRMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
+  const [walking, setWalking] = useState(false);
+  const [motion, setMotion] = useState(false);
+  const [Lmotion, setLMotion] = useState(false);
+  const [Rmotion, setRMotion] = useState(false);
   const [position, setPosition] = useState(0);
 
   const [Lposition, setLposition] = useState(0);
   const [Rposition, setRposition] = useState(0);
-  const lionRef = useRef(null); // .Lion 요소의 ref
-  const wrapperRef = useRef(null); // .wapper 요소의 ref
+
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const lionRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const toggleWalking = (direction) => {
     if (direction === "Right") {
@@ -135,6 +169,10 @@ export default function Question() {
     console.log(stage);
     event.stopPropagation();
     setStage((prevStage) => (prevStage < 12 ? prevStage + 1 : prevStage));
+    if (stage === 12) {
+      console.log("modal");
+      setShowModal(true);
+    }
   };
 
   const handleImageClick = (event) => {
@@ -203,12 +241,18 @@ export default function Question() {
             </div>
 
             <div className="Question-content Question-background-content">
+              {showModal && (
+                <Modal showModal={showModal} setShowModal={setShowModal} />
+              )}
               <span className="Question-progress-text content-text">
                 {stage}
               </span>
 
               <div className="bar">
-                <div className="bar-progress" />
+                <div
+                  className="bar-progress"
+                  style={{ width: `${barProgressWidth}%` }}
+                />
               </div>
 
               <span className="Question-text content-text">
