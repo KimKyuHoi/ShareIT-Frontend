@@ -7,24 +7,13 @@ import {
   faArrowRight,
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
+import JsonQuestionResource from "../../../apis/api";
+
+console.log("QuestionDataArray check");
+// const QuestionData = await JsonQuestionResource.fetchBooking();
+// const QuestionDataArray = await JsonQuestionResource.fetchBookingAry();
 
 export default function Question() {
-  const Questions = [
-    "질문없음",
-    "질문1",
-    "질문2",
-    "질문3",
-    "질문4",
-    "질문5",
-    "질문6",
-    "질문7",
-    "질문8",
-    "질문9",
-    "질문10",
-    "질문11",
-    "질문12",
-    "보너스질문",
-  ];
   const AnswersL = [
     "질문없음",
     "답변1",
@@ -61,6 +50,23 @@ export default function Question() {
   const [isClicked, setIsClicked] = useState(false); // 클릭 여부를 state로 관리
   const [stage, setStage] = useState(1);
 
+  const [Questions, setQuestions] = useState([
+    "질문없음",
+    "질문1",
+    "질문2",
+    "질문3",
+    "질문4",
+    "질문5",
+    "질문6",
+    "질문7",
+    "질문8",
+    "질문9",
+    "질문10",
+    "질문11",
+    "질문12",
+    "보너스질문",
+  ]);
+
   const [walking, setWalking] = useState(false); // 걷는 이미지를 보여줄지 여부
   const [motion, setMotion] = useState(false); // true: walking, false: standing
   const [Lmotion, setLMotion] = useState(false); // 걷는 이미지를 보여줄지 여부
@@ -81,6 +87,10 @@ export default function Question() {
       setWalking((prevWalking) => 1);
     }
   };
+
+  useEffect(() => {
+    // setQuestions(QuestionData);
+  }, []);
 
   useEffect(() => {
     if (walking === 2 && position < Rposition) {
@@ -108,10 +118,6 @@ export default function Question() {
     }
   }, [walking, position]);
 
-  const [question, setQuestion] = useState("test");
-  const [answer_left, setAnswerL] = useState("test");
-  const [answer_right, setAnswerR] = useState("test");
-
   useEffect(() => {
     const lionElement = lionRef.current;
     const wrapperElement = wrapperRef.current;
@@ -125,13 +131,6 @@ export default function Question() {
       setRposition(initialPosition + 100);
     }
   }, [position]);
-
-  useEffect(() => {
-    // setQuestion(" 프로그래밍을 할 때, 어떤 언어나 도구를 선호하나요?");
-    // setQuestion(Questions[0]);
-    // setAnswerL("이미 익숙한 언어나 도구를 사용한다");
-    // setAnswerR("새로운 언어나 도구에 도전해보는 것을 좋아한다");
-  }, []);
 
   const handleStage = (event) => {
     console.log(stage);
