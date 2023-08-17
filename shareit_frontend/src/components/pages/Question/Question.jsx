@@ -168,7 +168,7 @@ export default function Question() {
   const handleStage = (event) => {
     console.log(stage);
     event.stopPropagation();
-    setStage((prevStage) => (prevStage < 13 ? prevStage + 1 : prevStage));
+    setStage((prevStage) => (prevStage < 12 ? prevStage + 1 : prevStage));
     if (stage === 12) {
       console.log("modal");
       setShowModal(true);
