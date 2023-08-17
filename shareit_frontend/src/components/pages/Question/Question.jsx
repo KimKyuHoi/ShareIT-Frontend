@@ -7,7 +7,7 @@ import {
   faArrowRight,
   faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
-import JsonQuestionResource from "../../../apis/api";
+// import JsonQuestionResource from "../../../apis/api";
 
 console.log("QuestionDataArray check");
 // const QuestionData = await JsonQuestionResource.fetchBooking();
