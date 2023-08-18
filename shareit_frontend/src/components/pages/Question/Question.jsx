@@ -24,7 +24,7 @@ import ShowQuestion from "../../../service/ShowQuestion";
 // const QuestionData = await JsonQuestionResource.fetchBooking();
 // const QuestionDataArray = await JsonQuestionResource.fetchBookingAry();
 
-function Modal({ showModal, setShowModal }) {
+function Modal({ showModal, setShowModal, dimensionValues }) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -82,7 +82,7 @@ export default function Question() {
   const [stage, setStage] = useState(1);
   const barProgressWidth = (100 / 12) * stage;
 
-   const [Questions, setQuestions] = useState([
+  const [Questions, setQuestions] = useState([
     "질문없음",
     "첫 조별과제다. 다들 말이없다. 내가 먼저 말을 꺼내야하나? 이러면 조장인데?",
     "시간이 흘러 조별과제 발표날이 되었다. 발표하기로 맡은 팀원이 갑자기 연락이 안된다. 어떡하지???",
@@ -107,6 +107,16 @@ export default function Question() {
 
   const [Lposition, setLposition] = useState(0);
   const [Rposition, setRposition] = useState(0);
+  const [dimensionValues, setDimensionValues] = useState({
+    I: 0,
+    E: 0,
+    N: 0,
+    S: 0,
+    T: 0,
+    F: 0,
+    P: 0,
+    J: 0,
+  });
 
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
@@ -190,11 +200,15 @@ export default function Question() {
     }
   };
 
+  // let answerLeft = 0;
+  // let answerRight = 0;
+
   function handleClickLeft(index) {
     // Check if the index is valid
     if (index >= 0 && index < AnswersL.length) {
       const loadedValue = AnswersL[index];
       console.log("Loaded value:", loadedValue);
+      updateDimensionValues(loadedValue, "L");
       // setAnswerL(loadedValue);
       // You can now use the loadedValue as needed
     } else {
@@ -207,56 +221,93 @@ export default function Question() {
     if (index >= 0 && index < AnswersR.length) {
       const loadedValue = AnswersR[index];
       console.log("Loaded right value:", loadedValue);
+      updateDimensionValues(loadedValue, "R");
       // setAnswerR(loadedValue);
     } else {
       console.log("Invalid right index");
     }
   }
 
+  const updateDimensionValues = (index, side) => {
+    // I/E 차원 업데이트
+    if (index <= 3) {
+      setDimensionValues((prevValues) => ({
+        ...prevValues,
+        I: side === "L" ? prevValues.I + 1 : prevValues.I,
+        E: side === "R" ? prevValues.E + 1 : prevValues.E,
+      })
+      );
+      console.log("초기값" , dimensionValues);
+    }
+    if (index > 3 || index <= 6) {
+      setDimensionValues((prevValues) => ({
+        ...prevValues,
+        N: side === "L" ? prevValues.N + 1 : prevValues.N,
+        S: side === "R" ? prevValues.S + 1 : prevValues.S,
+      }));
+    }
+    if (index > 6 || index <= 9) {
+      setDimensionValues((prevValues) => ({
+        ...prevValues,
+        T: side === "L" ? prevValues.T + 1 : prevValues.T,
+        F: side === "R" ? prevValues.F + 1 : prevValues.F,
+      }));
+    }
+    // P/J 차원 업데이트
+    if (index > 9 || index <= 12) {
+      setDimensionValues((prevValues) => ({
+        ...prevValues,
+        P: side === "L" ? prevValues.P + 1 : prevValues.P,
+        J: side === "R" ? prevValues.J + 1 : prevValues.J,
+      }));
+    }
+  };
+
+
   const onClickBack = () => {
     navigate("/");
   }
 
-  const onClickReload = () =>{
+  const onClickReload = () => {
     window.location.reload();
   }
 
-  const [urlQuestion, setUrlQuestion] = useState("");
-  const [urlAnswer, setUrlAnswer] = useState("");
-  const [urlAnswer2, setUrlAnswer2] = useState("");
+  //   const [urlQuestion, setUrlQuestion] = useState("");
+  //   const [urlAnswer, setUrlAnswer] = useState("");
+  //   const [urlAnswer2, setUrlAnswer2] = useState("");
 
-  useEffect(() => {
-    ShowQuestion().then((data) => {
-        setUrlQuestion(data.questionContent);
-        setUrlAnswer(data.answerContent1);
-        setUrlAnswer2(data.answerContent2);
-        console.log("질문지 불러오기 성공");
-    }).catch((err) => {
-        console.log('불러오기 실패');
-    });
-}, []);
+  //   useEffect(() => {
+  //     ShowQuestion().then((data) => {
+  //         setUrlQuestion(data.questionContent);
+  //         setUrlAnswer(data.answerContent1);
+  //         setUrlAnswer2(data.answerContent2);
+  //         console.log("질문지 불러오기 성공");
+  //     }).catch((err) => {
+  //         console.log('불러오기 실패');
+  //     });
+  // }, []);
 
-  const onClickAnswer1 = async(event) => {
-    event.preventDefault();
+  //   const onClickAnswer1 = async(event) => {
+  //     event.preventDefault();
 
-    try{
-      const create = await showAnswer(urlAnswer);
-      console.log(create);
-    }catch(error){
-      throw new error(error)
-    }
-  }
+  //     try{
+  //       const create = await showAnswer(urlAnswer);
+  //       console.log(create);
+  //     }catch(error){
+  //       throw new error(error)
+  //     }
+  //   }
 
-  const onClickAnswer2 = async(event) => {
-    event.preventDefault();
+  //   const onClickAnswer2 = async(event) => {
+  //     event.preventDefault();
 
-    try{
-      const create = await showAnswer(urlAnswer2);
-      console.log(create);
-    }catch(error){
-      throw new error(error)
-    }
-  }
+  //     try{
+  //       const create = await showAnswer(urlAnswer2);
+  //       console.log(create);
+  //     }catch(error){
+  //       throw new error(error)
+  //     }
+  //   }
 
   return (
     <>
@@ -276,9 +327,9 @@ export default function Question() {
                 <span className="header-text content-text">Share IT</span>
               </div>
               <div className="header-container">
-                <FontAwesomeIcon icon={faArrowLeft} onClick={onClickBack}/>
+                <FontAwesomeIcon icon={faArrowLeft} onClick={onClickBack} />
                 <FontAwesomeIcon icon={faArrowRight} />
-                <FontAwesomeIcon icon={faArrowsRotate} onClick={onClickReload}/>
+                <FontAwesomeIcon icon={faArrowsRotate} onClick={onClickReload} />
                 <div className="header-link-background">
                   <span className="header-text link content-text">
                     http://www.ShareIT.com
