@@ -18,13 +18,16 @@ const Help = () => {
         navigate("/");
     }
 
+    const onClickReload = () => {
+        window.location.reload();
+    }
 
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{duration: 1.6}}
+            transition={{ duration: 1.6 }}
         >
             <div
                 className="backGroundImg"
@@ -40,7 +43,7 @@ const Help = () => {
                             <div className="header-container">
                                 <FontAwesomeIcon icon={faArrowLeft} onClick={onClickBack} />
                                 <FontAwesomeIcon icon={faArrowRight} />
-                                <FontAwesomeIcon icon={faArrowsRotate} />
+                                <FontAwesomeIcon icon={faArrowsRotate} onClick={onClickReload}/>
                                 <div className="header-link-background">
                                     <span className="header-text link content-text">
                                         http://www.ShareIT.com

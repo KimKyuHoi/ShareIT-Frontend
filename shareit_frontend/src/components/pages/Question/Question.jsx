@@ -15,7 +15,7 @@ import {
   useHistory,
   useNavigate,
 } from "react-router-dom";
-// import JsonQuestionResource from "../../../apis/api";
+// import JsonQuestionResource from "../../../service/api";
 
 console.log("QuestionDataArray check");
 // const QuestionData = await JsonQuestionResource.fetchBooking();
@@ -211,6 +211,14 @@ export default function Question() {
     }
   }
 
+  const onClickBack = () => {
+    navigate("/");
+  }
+
+  const onClickReload = () =>{
+    window.location.reload();
+  }
+
   return (
     <>
       <div
@@ -229,9 +237,9 @@ export default function Question() {
                 <span className="header-text content-text">Share IT</span>
               </div>
               <div className="header-container">
-                <FontAwesomeIcon icon={faArrowLeft} />
+                <FontAwesomeIcon icon={faArrowLeft} onClick={onClickBack}/>
                 <FontAwesomeIcon icon={faArrowRight} />
-                <FontAwesomeIcon icon={faArrowsRotate} />
+                <FontAwesomeIcon icon={faArrowsRotate} onClick={onClickReload}/>
                 <div className="header-link-background">
                   <span className="header-text link content-text">
                     http://www.ShareIT.com
@@ -305,8 +313,8 @@ export default function Question() {
                       ? "./img/likelion_lion_runLeft.png"
                       : "./img/likelion_lion_basicL.gif"
                     : walking === 2 && motion
-                    ? "./img/likelion_lion_runRight.png"
-                    : "./img/likelion_lion_basicR.gif"
+                      ? "./img/likelion_lion_runRight.png"
+                      : "./img/likelion_lion_basicR.gif"
                 }
                 alt={
                   motion

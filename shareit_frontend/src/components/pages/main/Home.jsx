@@ -31,7 +31,9 @@ const Main = () => {
     navigate("/help");
   }
 
-
+  const onClickReload = () =>{
+    window.location.reload();
+  }
 
   return (
     <motion.div
@@ -54,7 +56,7 @@ const Main = () => {
               <div className="header-container">
                 <FontAwesomeIcon icon={faArrowLeft}/>
                 <FontAwesomeIcon icon={faArrowRight} />
-                <FontAwesomeIcon icon={faArrowsRotate} />
+                <FontAwesomeIcon icon={faArrowsRotate} onClick={onClickReload}/>
                 <div className="header-link-background">
                   <span className="header-text link content-text">
                     http://www.ShareIT.com
