@@ -16,8 +16,11 @@ import {
   useNavigate,
 } from "react-router-dom";
 // import JsonQuestionResource from "../../../service/api";
+import showAnswer from "../../../service/ShowAnswer";
+import showAnswer2 from "../../../service/ShowAnswer2";
+import ShowQuestion from "../../../service/ShowQuestion";
 
-console.log("QuestionDataArray check");
+// console.log("QuestionDataArray check");
 // const QuestionData = await JsonQuestionResource.fetchBooking();
 // const QuestionDataArray = await JsonQuestionResource.fetchBookingAry();
 
@@ -45,55 +48,54 @@ function Modal({ showModal, setShowModal }) {
 export default function Question() {
   const AnswersL = [
     "질문없음",
-    "답변1",
-    "답변2",
-    "답변3",
-    "답변4",
-    "답변5",
-    "답변6",
-    "답변7",
-    "답변8",
-    "답변9",
-    "답변10",
-    "답변11",
-    "답변12",
-    "보너스답변",
+    "에이 모르겠다. 내가 해야겠다.",
+    "아 그냥 내가 하지뭐 그대신 이름 무조건 뺀다",
+    "잘 소통해서 좋은 코드를 선택을 하자",
+    "일단은 생존에 앞서 생존물자를 구하고 주저리주저리..",
+    "미리 개발 구조를 생각하면서 개발을 진행한다.",
+    "전반적인 아이디어를 고려하며 디자인과 함께 작업물을 만든다",
+    "네이버 지도켜서 젤 빠른 길로 간다",
+    "너 표정이 안좋아 괜찮아?",
+    "(코드를 자세히 본다) 흠...그거 그대로 복사해서 구글링해봐.(",
+    "아 내가 여기 찾아본 맛집이 있어 그냥 거기 더 가고싶은데 거기로 가자",
+    "당황하지 않고, 조금씩 정리해서 어떻게 할지 계획하자",
+    "차근차근 서로서로 역할을 맡아서 기획서 쓰시죠?",
   ];
 
   const AnswersR = [
     "질문없음",
-    "답변1",
-    "답변2",
-    "답변3",
-    "답변4",
-    "답변5",
-    "답변6",
-    "답변7",
-    "답변8",
-    "답변9",
-    "답변10",
-    "답변11",
-    "답변12",
-    "보너스답변",
+    "아 좀 어색한데? 걍 조용히 있어야지",
+    "아 어떡하지?어떡하지?",
+    "어...음...알아서 얘기 잘 해주시겠지? 안되면 내 코드 밀지 뭐...",
+    "그걸 왜 생각하나요?",
+    "일단 프로그램 잘 돌아가는거 보기위해 개발을 진행한다",
+    "일단 작업물을 만들고 디자인은 나중에 생각하자",
+    "에이 그냥 내가 알던 길로 걍 빨리 달려가자",
+    "너 표정이 안좋아 뭔일있어? ",
+    "고생이 많네 머리 아프지? 나도 좀 같이 고민해보자",
+    "아 맛있겠당 빨리 가서 먹어야지~",
+    "일단 맛난거부터 먹고 생각하자(배민을 키면서)",
+    "일단 서로 의논하면서 써볼까요?",
   ];
+
   const [isClicked, setIsClicked] = useState(false);
   const [stage, setStage] = useState(1);
   const barProgressWidth = (100 / 12) * stage;
 
-  const [Questions, setQuestions] = useState([
+   const [Questions, setQuestions] = useState([
     "질문없음",
-    "질문1",
-    "질문2",
-    "질문3",
-    "질문4",
-    "질문5",
-    "질문6",
-    "질문7",
-    "질문8",
-    "질문9",
-    "질문10",
-    "질문11",
-    "질문12",
+    "첫 조별과제다. 다들 말이없다. 내가 먼저 말을 꺼내야하나? 이러면 조장인데?",
+    "시간이 흘러 조별과제 발표날이 되었다. 발표하기로 맡은 팀원이 갑자기 연락이 안된다. 어떡하지???",
+    " 팀원이 소통의 문제로 똑같은 부분의 코드를 짜왔다. 어떻게 해결해야되지?",
+    "당신은 좀비 아포칼립스 세상에 있습니다. 어떻게 해야하지?",
+    "개발을 진행할 때, 보통 어떤스타일로 개발을 하더라...",
+    " 당신은 친구들과 해커톤에 나가기로 결심했습니다. 친구들과 아이디어를 논의 후 작업물을 만들기로 했습니다. 어떻게 만들어볼까?",
+    "친구랑 약속때문에 가는데 살짝 지각이다. 이대로는 늦겠어!!! 어떡하지???",
+    "친구를 만났는데 친구 표정이 뚱하다.",
+    "개발을 진행하다가 같은 팀원이 원인모를 에러로 당신에게 코드리뷰를 부탁하고 있다. 어떻게 얘기를 할까?",
+    "친구랑 여행을 갔다! 기차역에서 내리니까 공기가 좋다. 밥은 뭐먹지? 아 저기 맛있어 보인다! 저기로 가볼까?",
+    "작업물 할 게 왜 이렇게 많지? 회의하다 보니까 너무 작업물이 쌓였네.이거 어떻게 해결하지?",
+    " 학교에서 기획서를 써야되는 상황이 발생하였다. 팀원들과 논의를 하게 되었다. 어떤 의견을 내야할까?",
     "보너스질문",
   ]);
 
@@ -217,6 +219,43 @@ export default function Question() {
 
   const onClickReload = () =>{
     window.location.reload();
+  }
+
+  const [urlQuestion, setUrlQuestion] = useState("");
+  const [urlAnswer, setUrlAnswer] = useState("");
+  const [urlAnswer2, setUrlAnswer2] = useState("");
+
+  useEffect(() => {
+    ShowQuestion().then((data) => {
+        setUrlQuestion(data.questionContent);
+        setUrlAnswer(data.answerContent1);
+        setUrlAnswer2(data.answerContent2);
+        console.log("질문지 불러오기 성공");
+    }).catch((err) => {
+        console.log('불러오기 실패');
+    });
+}, []);
+
+  const onClickAnswer1 = async(event) => {
+    event.preventDefault();
+
+    try{
+      const create = await showAnswer(urlAnswer);
+      console.log(create);
+    }catch(error){
+      throw new error(error)
+    }
+  }
+
+  const onClickAnswer2 = async(event) => {
+    event.preventDefault();
+
+    try{
+      const create = await showAnswer(urlAnswer2);
+      console.log(create);
+    }catch(error){
+      throw new error(error)
+    }
   }
 
   return (

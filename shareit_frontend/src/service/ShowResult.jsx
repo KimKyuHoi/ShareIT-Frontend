@@ -4,7 +4,13 @@ import { BASE_URL } from "../Constants/url";
 const ShowResult = async () => {
     try {
         const response = await axios.get(
-            `${BASE_URL}/`
+            `${BASE_URL}/result/3`,
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+
+                },
+            }
         );
 
         return response.data;
