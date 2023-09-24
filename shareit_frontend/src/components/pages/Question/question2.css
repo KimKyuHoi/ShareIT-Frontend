@@ -1,0 +1,394 @@
+@font-face {
+    font-family: "DungGeunMo";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "DungGeunMo";
+  }
+  
+  .aligncenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Question-wrapper */
+  /* Question-content */
+  /* Question-backgroud */
+  /* Question-answer-right */
+  /* Question-answer-left */
+  /* bar */
+  /* bar-progress  12단계가 있음 stage를 바꾸면 된다*/
+  /* Question-text */
+  /* Question-answer-text */
+  /* Question-answer-text */
+  /* Lion */
+  /* Question-progress-text */
+  /* Question-header */
+  /* Question-background */
+  /* header-background */
+  /* header-link-background */
+  /* header-page-background */
+  /* header-text */
+  /* header-text */
+  /* IconLion */
+  /* SCSS styles */
+  .content-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    text-align: center;
+    color: #000000;
+  }
+  
+  .header-container {
+    width: 100%;
+    height: 28px;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    border-width: 1px 0 1px 0px;
+    border-style: solid;
+    border-color: #E5E5E5 #000000 #E5E5E5 #000000;
+    padding: 10px 8px;
+    gap: 7px;
+    background-color: #ffffff;
+    color: #8B95A1;
+    box-sizing: border-box;
+  }
+  .header-container .svg {
+    background: none;
+    color: #8B95A1;
+  }
+  
+  .header-text {
+    position: relative;
+    width: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 10px;
+    /* or 15px */
+    color: #000000;
+  }
+  
+  .link {
+    position: absolute;
+  }
+  
+  .Question-background {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Question-wrapper */
+  .Question-wrapper {
+    position: relative;
+    width: 67.96875vw;
+    height: 56.3580729167vh;
+    max-width: 696px;
+    min-height: 432px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  /* Question-content */
+  .Question-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Question-background header*/
+  .Question-background-header {
+    box-sizing: border-box;
+    width: 100%;
+    height: 57.17px;
+    background: #7C93F9;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 20px 20px 0px 0px;
+  }
+  
+  /* bar */
+  .bar {
+    box-sizing: border-box;
+    position: absolute;
+    width: 49.31640625vw;
+    max-width: 500px;
+    height: 2.2135416667vh;
+    top: 107px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* bar-progress */
+  .bar-progress {
+    position: absolute;
+    width: calc(49.31640625vw / 12 * 4.1097005208vw);
+    max-width: 496px;
+    height: 100%;
+    background: #FEACA5;
+  }
+  
+  /* Question-text */
+  .Question-text {
+    position: absolute;
+    height: 53px;
+    font-size: 20px;
+    top: 143px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+  }
+  
+  /* Question-progress-text */
+  .Question-progress-text {
+    position: absolute;
+    width: 53px;
+    height: 43px;
+    top: 64px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #000000;
+  }
+  
+  /* Question-header */
+  .Question-header {
+    position: absolute;
+  }
+  
+  /* Lion */
+  .Lion {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s ease-in-out;
+    bottom: 0px;
+    left: 0px;
+  }
+  
+  /* Question-background */
+  .Question-background-content {
+    box-sizing: border-box;
+    top: 57.17px;
+    background: #FFFFFF;
+    border-width: 0px 3px 3px 3px;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 0px 0px 20px 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* header-background */
+  .header-background {
+    box-sizing: border-box;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* header-link-background */
+  .header-link-background {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 17px;
+    background: #E5E5E5;
+    border-radius: 10px;
+    padding: 0 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* header-page-background */
+  .header-page-background {
+    position: absolute;
+    left: 9px;
+    width: 97px;
+    height: 25px;
+    background: #FFFFFF;
+    border-radius: 8px 8px 0px 0px;
+    display: flex;
+  }
+  
+  /* Question-answer-right */
+  .Question-answer-right {
+    position: absolute;
+    width: 247px;
+    height: 129px;
+    bottom: calc(10%);
+    left: calc(50% + 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Question-answer-left */
+  .Question-answer-left {
+    position: absolute;
+    width: 247px;
+    height: 129px;
+    bottom: calc(10%);
+    right: calc(50% + 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .Question-answer-leftimg {
+    position: absolute;
+    height: 128.71px;
+    width: auto;
+  }
+  
+  .Question-answer-rightimg {
+    position: absolute;
+    height: 128.71px;
+    width: auto;
+  }
+  
+  .Question-answer-right:hover {
+    transform: translateY(-20px);
+  }
+  
+  .Question-answer-left:hover {
+    transform: translateY(-20px);
+  }
+  
+  /* Question-answer-text */
+  .Question-answer-text-left {
+    position: absolute;
+    width: 210px;
+    height: 71px;
+    top: 15px;
+    font-size: 16px;
+  }
+  
+  /* Question-answer-text */
+  .Question-answer-text-right {
+    position: absolute;
+    width: 210px;
+    height: 71px;
+    top: 15px;
+    font-size: 16px;
+  }
+  
+  .logo {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    top: 4px;
+    left: 3px;
+  }
+  
+  .backGroundImg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    height: 100vh;
+    z-index: -1;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .Question-wrapper {
+      width: 95vw;
+      height: 376.83px;
+      min-height: 50vw;
+    }
+  
+    .Question-answer-right {
+      width: 134px;
+      height: 100px;
+    }
+  
+    .Question-answer-left {
+      width: 134px;
+      height: 100px;
+    }
+  
+    .Question-answer-leftimg {
+      height: 70px;
+    }
+  
+    .Question-answer-rightimg {
+      height: 70px;
+    }
+  
+    .Question-answer-text-left {
+      width: 130px;
+      height: 40px;
+      font-size: 0.75rem;
+      top: 25px;
+      background: none;
+    }
+  
+    /* Question-answer-text */
+    .Question-answer-text-right {
+      width: 130px;
+      height: 50px;
+      font-size: 0.75rem;
+      top: 25px;
+    }
+  }
+  .modal {
+    width: 150px;
+    height: auto;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center horizontally */
+    position: fixed;
+    bottom: 0;
+    top: 40%;
+    background: none;
+    box-sizing: border-box;
+  }
+  .modal button {
+    width: 150px;
+    background-color: #7871D1;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .modal button:hover {
+    background-color: #9b94eb;
+  }

@@ -6,7 +6,7 @@ import { memberId, answerId1} from "../Constants/url"
 const ShowResult = async (answerContent1) => {
     try {
         const response = await axios.post(
-            `${BASE_URL}/answer/${memberId}/${answerId1}`,
+            `${BASE_URL}/answer/1/${answerId1}`,
             answerContent1,
             {
                 headers: {

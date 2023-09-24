@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./question.scss";
+import { BASE_URL, answerId1 } from "../../../Constants/url";
+import "./question2.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackgroundImage from "../../../assets/MainBackground.png";
 import {
@@ -19,6 +20,7 @@ import {
 import showAnswer from "../../../service/ShowAnswer";
 import showAnswer2 from "../../../service/ShowAnswer2";
 import ShowQuestion from "../../../service/ShowQuestion";
+import axios from "axios";
 
 // console.log("QuestionDataArray check");
 // const QuestionData = await JsonQuestionResource.fetchBooking();
@@ -123,12 +125,38 @@ export default function Question() {
   const lionRef = useRef(null);
   const wrapperRef = useRef(null);
 
+  const [urlQuestion, setUrlQuestion] = useState("");
+  const [urlAnswer, setUrlAnswer] = useState("");
+  const [urlAnswer2, setUrlAnswer2] = useState("");
+  const [urlAnswerIdL, setUrlAnswerIdL] = useState();
+  const [urlAnswerIdR, setUrlAnswerIdR] = useState();
+
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/question/${stage}`, {})
+      .then((response) => {
+        console.log(response.data);
+        setUrlQuestion(response.data.questionContent);
+        setUrlAnswer(response.data.answerContent1);
+        setUrlAnswer2(response.data.answerContent2);
+        setUrlAnswerIdL(response.data.answerId1);
+        setUrlAnswerIdR(response.data.answerId2);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [stage]);
+
   const toggleWalking = (direction) => {
     if (direction === "Right") {
       console.log("오른쪽이동");
+      axios.post(`${BASE_URL}/answer/1/${urlAnswerIdL}`, {}).then((res) => {
+        console.log(res.data);
+      });
       setWalking((prevWalking) => 2);
     } else if (direction === "Left") {
       console.log("왼쪽이동");
+
       setWalking((prevWalking) => 1);
     }
   };
@@ -141,8 +169,6 @@ export default function Question() {
     if (walking === 2 && position < Rposition) {
       const interval = setInterval(() => {
         setMotion((prevMotion) => !prevMotion);
-        // setRMotion((prevMotion) => !prevMotion);
-        // setLMotion((prevMotion) => false);
         setPosition((prevPosition) => prevPosition + 10);
       }, 100);
 
@@ -152,8 +178,6 @@ export default function Question() {
     } else if (walking === 1 && position > Lposition) {
       const interval = setInterval(() => {
         setMotion((prevMotion) => !prevMotion);
-        // setLMotion((prevMotion) => !prevMotion);
-        // setRMotion((prevMotion) => false);
         setPosition((prevPosition) => prevPosition - 10);
       }, 100);
 
@@ -200,114 +224,50 @@ export default function Question() {
     }
   };
 
-  // let answerLeft = 0;
-  // let answerRight = 0;
-
-  function handleClickLeft(index) {
-    // Check if the index is valid
-    if (index >= 0 && index < AnswersL.length) {
-      const loadedValue = AnswersL[index];
-      console.log("Loaded value:", loadedValue);
-      updateDimensionValues(loadedValue, "L");
-      // setAnswerL(loadedValue);
-      // You can now use the loadedValue as needed
-    } else {
-      console.log("Invalid index");
-    }
-  }
-
-  function handleClickRight(index) {
-    // Check if the index is valid
-    if (index >= 0 && index < AnswersR.length) {
-      const loadedValue = AnswersR[index];
-      console.log("Loaded right value:", loadedValue);
-      updateDimensionValues(loadedValue, "R");
-      // setAnswerR(loadedValue);
-    } else {
-      console.log("Invalid right index");
-    }
-  }
-
-  const updateDimensionValues = (index, side) => {
-    // I/E 차원 업데이트
-    if (index <= 3) {
-      setDimensionValues((prevValues) => ({
-        ...prevValues,
-        I: side === "L" ? prevValues.I + 1 : prevValues.I,
-        E: side === "R" ? prevValues.E + 1 : prevValues.E,
-      })
-      );
-      console.log("초기값" , dimensionValues);
-    }
-    if (index > 3 || index <= 6) {
-      setDimensionValues((prevValues) => ({
-        ...prevValues,
-        N: side === "L" ? prevValues.N + 1 : prevValues.N,
-        S: side === "R" ? prevValues.S + 1 : prevValues.S,
-      }));
-    }
-    if (index > 6 || index <= 9) {
-      setDimensionValues((prevValues) => ({
-        ...prevValues,
-        T: side === "L" ? prevValues.T + 1 : prevValues.T,
-        F: side === "R" ? prevValues.F + 1 : prevValues.F,
-      }));
-    }
-    // P/J 차원 업데이트
-    if (index > 9 || index <= 12) {
-      setDimensionValues((prevValues) => ({
-        ...prevValues,
-        P: side === "L" ? prevValues.P + 1 : prevValues.P,
-        J: side === "R" ? prevValues.J + 1 : prevValues.J,
-      }));
-    }
-  };
-
-
   const onClickBack = () => {
     navigate("/");
-  }
+  };
 
   const onClickReload = () => {
     window.location.reload();
-  }
+  };
 
-  //   const [urlQuestion, setUrlQuestion] = useState("");
-  //   const [urlAnswer, setUrlAnswer] = useState("");
-  //   const [urlAnswer2, setUrlAnswer2] = useState("");
-
-  //   useEffect(() => {
-  //     ShowQuestion().then((data) => {
-  //         setUrlQuestion(data.questionContent);
-  //         setUrlAnswer(data.answerContent1);
-  //         setUrlAnswer2(data.answerContent2);
-  //         console.log("질문지 불러오기 성공");
-  //     }).catch((err) => {
-  //         console.log('불러오기 실패');
+  // useEffect(() => {
+  //   ShowQuestion()
+  //     .then((data) => {
+  //       setUrlQuestion(data.questionContent);
+  //       setUrlAnswer(data.answerContent1);
+  //       setUrlAnswer2(data.answerContent2);
+  //       setUrlAnswerIdL(data.answerId1)
+  //       setUrlAnswerIdR(data.answerId2)
+  //       console.log("질문지 불러오기 성공");
+  //     })
+  //     .catch((err) => {
+  //       console.log("불러오기 실패");
   //     });
-  // }, []);
+  // }, [stage]);
 
-  //   const onClickAnswer1 = async(event) => {
-  //     event.preventDefault();
+  const onClickAnswer1 = async (event) => {
+    event.preventDefault();
 
-  //     try{
-  //       const create = await showAnswer(urlAnswer);
-  //       console.log(create);
-  //     }catch(error){
-  //       throw new error(error)
-  //     }
-  //   }
+    try {
+      const create = await showAnswer(urlAnswer);
+      console.log(create);
+    } catch (error) {
+      throw new error(error);
+    }
+  };
 
-  //   const onClickAnswer2 = async(event) => {
-  //     event.preventDefault();
+  const onClickAnswer2 = async (event) => {
+    event.preventDefault();
 
-  //     try{
-  //       const create = await showAnswer(urlAnswer2);
-  //       console.log(create);
-  //     }catch(error){
-  //       throw new error(error)
-  //     }
-  //   }
+    try {
+      const create = await showAnswer(urlAnswer2);
+      console.log(create);
+    } catch (error) {
+      throw new error(error);
+    }
+  };
 
   return (
     <>
@@ -329,7 +289,10 @@ export default function Question() {
               <div className="header-container">
                 <FontAwesomeIcon icon={faArrowLeft} onClick={onClickBack} />
                 <FontAwesomeIcon icon={faArrowRight} />
-                <FontAwesomeIcon icon={faArrowsRotate} onClick={onClickReload} />
+                <FontAwesomeIcon
+                  icon={faArrowsRotate}
+                  onClick={onClickReload}
+                />
                 <div className="header-link-background">
                   <span className="header-text link content-text">
                     http://www.ShareIT.com
@@ -353,9 +316,7 @@ export default function Question() {
                 />
               </div>
 
-              <span className="Question-text content-text">
-                {Questions[stage]}
-              </span>
+              <span className="Question-text content-text">{urlQuestion}</span>
 
               <button
                 className="Question-answer-left"
@@ -372,7 +333,7 @@ export default function Question() {
                 ></img>
                 <span className="Question-answer-text-left content-text">
                   {" "}
-                  {AnswersL[stage]}
+                  {urlAnswer}
                 </span>
               </button>
 
@@ -390,7 +351,7 @@ export default function Question() {
                   onClick={(event) => handleImageClick(event)}
                 ></img>
                 <span className="Question-answer-text-right content-text">
-                  {AnswersR[stage]}
+                  {urlAnswer2}
                 </span>
               </button>
 
@@ -403,8 +364,8 @@ export default function Question() {
                       ? "./img/likelion_lion_runLeft.png"
                       : "./img/likelion_lion_basicL.gif"
                     : walking === 2 && motion
-                      ? "./img/likelion_lion_runRight.png"
-                      : "./img/likelion_lion_basicR.gif"
+                    ? "./img/likelion_lion_runRight.png"
+                    : "./img/likelion_lion_basicR.gif"
                 }
                 alt={
                   motion
