@@ -1,6 +1,6 @@
 import React from "react";
-// import { useEffect, useState } from "react";
-// import ShowResult from "../../../service/ShowResult";
+import { useEffect, useState } from "react";
+import ShowResult from "../../../service/ShowResult";
 import { useRef } from "react";
 import styles from "./Result.module.css";
 import frontendTitle from "../../../assets/FrontendTitle.png";
@@ -48,6 +48,9 @@ import PlannerFlag from "../../../assets/flag_planner.png";
 import devOpsFlag from "../../../assets/flag_devops.png";
 import devOpsTitle from "../../../assets/title_devOps.png";
 import devOpsPrinter from "../../../assets/printer_devOps.png";
+import fullstackTitle from "../../../assets/title_full_stack.png";
+import fullstackPrinter from "../../../assets/printer_full_stack.png";
+import fullstackFlag from "../../../assets/flag_full_stack.png";
 
 import BackgroundImage from "../../../assets/background.png";
 import snsBtn from "../../../assets/SNSBtn.png";
@@ -93,85 +96,126 @@ const DUMMY_DATA = [
   },
   {
     id: "7",
-    title: frontendTitle,
-    printer: frontendPrinter,
-    flags: frontendFlag,
-  }, {
+    title: fullstackTitle,
+    printer: fullstackPrinter,
+    flags: fullstackFlag,
+  },
+  {
     id: "8",
     title: WebDesignTitle,
     printer: WebDesignPrinter,
     flags: WebDesignFlag,
-  }, {
+  },
+  {
     id: "9",
     title: GraphicTitle,
     printer: GraphicPrinter,
     flags: GraphicFlag,
-  }, {
+  },
+  {
     id: "10",
     title: GameTitle,
     printer: GamePrinter,
     flags: GameFlag,
-  }, {
+  },
+  {
     id: "11",
     title: SecurityTitle,
     printer: SecurityPrinter,
     flags: SecurityFlag,
-  }, {
+  },
+  {
     id: "12",
     title: NetworkTitle,
     printer: NetworkPrinter,
     flags: NetworkFlag,
-  }, {
+  },
+  {
     id: "13",
     title: EmbededTitle,
     printer: EmbededPrinter,
     flags: EmbededFlag,
-  }, {
+  },
+  {
     id: "14",
     title: BlockChainTitle,
     printer: BlockChainPrinter,
     flags: BlockChainFlag,
-  }, {
+  },
+  {
     id: "15",
     title: PlannerTitle,
     printer: PlannerPrinter,
     flags: PlannerFlag,
-  }, {
+  },
+  {
     id: "16",
     title: devOpsTitle,
     printer: devOpsPrinter,
     flags: devOpsFlag,
-  }
-
+  },
 ];
 
-
 const Result = () => {
-  // const [images, setImages] = useState([]);
-  // const [url, setUrl] = useState("");
+  const [tenType, setTenType] = useState("");
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   ShowResult().then((data) => {
-  //     setImages(data.imageUrls);
-  //     setUrl(data.url);
-  //   }).catch((error) => {
-  //     console.error(error);
-  //     alert(error.response.data);
-  //     throw new Error(error.response.data.message);
-  //   });
-
-  // }, []);
+  useEffect(() => {
+    ShowResult()
+      .then((data) => {
+        setTenType(data.tenType);
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(error.response.data);
+        throw new Error(error.response.data.message);
+      });
+  }, []);
 
   const onClickBack = () => {
     navigate("/");
+  };
+
+  let selectedData;
+
+  if (tenType === "INTP") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "2"); // 예시에 따라 선택한 값 설정
+  } else if (tenType === "INTJ") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "7");
+  } else if (tenType === "INFP") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "8");
+  } else if (tenType === "INFJ") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "11");
+  } else if (tenType === "ISTP") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "14");
+  } else if (tenType === "ISTJ") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "4");
+  } else if (tenType === "ISFP") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "12");
+  } else if (tenType === "ISFJ") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "6");
+  } else if (tenType === "ENTP") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "5");
+  } else if (tenType === "ENTJ") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "10");
+  } else if (tenType === "ENFP") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "9");
+  } else if (tenType === "ENFJ") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "1");
+  } else if (tenType === "ESTP") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "3");
+  } else if (tenType === "ESTJ") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "16");
+  } else if (tenType === "ESFP") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "13");
+  } else if (tenType === "ESFJ") {
+    selectedData = DUMMY_DATA.find((data) => data.id === "15");
   }
 
-  // const onClickUrl = () => {
-  //   window.open(url);
-  // }
+  if (!selectedData) {
+    selectedData = DUMMY_DATA[0]; // 예를 들어 기본값으로 첫 번째 데이터 항목을 선택
+  }
 
-  const selectedData = DUMMY_DATA[1];
   const urlRef = useRef("http://223.130.134.83");
 
   const copyToClipboard = () => {
@@ -189,7 +233,8 @@ const Result = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1.6 }}
-      className={styles.container}>
+      className={styles.container}
+    >
       <div
         className={styles.backGroundImg}
         style={{ backgroundImage: `url(${BackgroundImage})` }}
@@ -217,7 +262,12 @@ const Result = () => {
             className={styles.flags}
           />
           {/* <img key={images[1]} src={images[2]} alt={`프린터기입니다.`} className={styles.printer} /> */}
-          <img src={snsBtn} alt="공유 이미지입니다." className={styles.sns} onClick={copyToClipboard}/>
+          <img
+            src={snsBtn}
+            alt="공유 이미지입니다."
+            className={styles.sns}
+            onClick={copyToClipboard}
+          />
           <input
             type="text"
             ref={urlRef}
@@ -227,7 +277,6 @@ const Result = () => {
           />
         </div>
       </main>
-
     </motion.div>
   );
 };

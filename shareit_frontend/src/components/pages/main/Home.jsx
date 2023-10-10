@@ -7,41 +7,57 @@ import {
   faArrowLeft,
   faArrowRight,
   faArrowsRotate,
+  faStar,
 } from "@fortawesome/free-solid-svg-icons";
-import ShareIT from "../../../assets/shareIT.png"
-import ResultEngine from "../../../assets/ResultEngine.png"
+import ShareIT from "../../../assets/shareIT.png";
+import ResultEngine from "../../../assets/ResultEngine.png";
 import Start from "../../../assets/Start.png";
 import Help from "../../../assets/Help.png";
 import Contributor from "../../../assets/Contributor.png";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import VisitUser from "../../../service/VisitUser";
+import { useEffect, useState } from "react";
 
 const Main = () => {
   const navigate = useNavigate();
+  const [visited, setVisited] = useState(0);
 
-  const onClickContributor = () =>{
+  useEffect(() => {
+    VisitUser()
+      .then((data) => {
+        setVisited(data.visited);
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(error.response.data);
+        throw new Error(error.response.data.message);
+      });
+  }, []);
+
+  const onClickContributor = () => {
     navigate("/contributor");
-  }
+  };
 
-  const onClickStart = () =>{
+  const onClickStart = () => {
     navigate("/question");
-  }
+  };
 
-  const onClickHelp = () =>{
+  const onClickHelp = () => {
     navigate("/help");
-  }
+  };
 
-  const onClickReload = () =>{
+  const onClickReload = () => {
     window.location.reload();
-  }
+  };
 
   return (
     <motion.div
-         initial={{opacity: 0}}
-         animate={{opacity: 1}}
-         exit={{opacity: 0}}
-         transition={{duration: 1.6}}
-         >
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1.6 }}
+    >
       <div
         className="backGroundImg"
         style={{ backgroundImage: `url(${BackgroundImage})` }}
@@ -50,13 +66,20 @@ const Main = () => {
           <div className="Question-wrapper">
             <div className="Question-header  Question-background-header">
               <div className="header-page-background">
-                <img className="logo" alt="사자이미지입니다." src="./img/Lion.png" />
+                <img
+                  className="logo"
+                  alt="사자이미지입니다."
+                  src="./img/Lion.png"
+                />
                 <span className="header-text content-text">Share IT</span>
               </div>
               <div className="header-container">
-                <FontAwesomeIcon icon={faArrowLeft}/>
+                <FontAwesomeIcon icon={faArrowLeft} />
                 <FontAwesomeIcon icon={faArrowRight} />
-                <FontAwesomeIcon icon={faArrowsRotate} onClick={onClickReload}/>
+                <FontAwesomeIcon
+                  icon={faArrowsRotate}
+                  onClick={onClickReload}
+                />
                 <div className="header-link-background">
                   <span className="header-text link content-text">
                     http://www.ShareIT.com
@@ -67,20 +90,50 @@ const Main = () => {
 
             <div className="Question-content Question-background-content">
               <div className="titleImg">
-                <img src={ShareIT} alt="제목이미지입니다." className="shareIt" />
-                <img src={ResultEngine} alt="제목이미지입니다." className="ResultEngine" />
+                <img
+                  src={ShareIT}
+                  alt="제목이미지입니다."
+                  className="shareIt"
+                />
+                <img
+                  src={ResultEngine}
+                  alt="제목이미지입니다."
+                  className="ResultEngine"
+                />
                 <ul className="btnList">
-                  <li><img src={Contributor} alt="제목이미지입니다." className="contributor" onClick={onClickContributor}/></li>
-                  <li><img src={Start} alt="제목이미지입니다." className="start" onClick={onClickStart}/></li>
-                  <li><img src={Help} alt="제목이미지입니다." className="help" onClick={onClickHelp}/></li>
+                  <li>
+                    <img
+                      src={Contributor}
+                      alt="제목이미지입니다."
+                      className="contributor"
+                      onClick={onClickContributor}
+                    />
+                  </li>
+                  <li>
+                    <img
+                      src={Start}
+                      alt="제목이미지입니다."
+                      className="start"
+                      onClick={onClickStart}
+                    />
+                  </li>
+                  <li>
+                    <img
+                      src={Help}
+                      alt="제목이미지입니다."
+                      className="help"
+                      onClick={onClickHelp}
+                    />
+                  </li>
                 </ul>
+                <span className="visitors"><FontAwesomeIcon icon={faStar} flip size="2xs" style={{ color: "#fcc783", }} /> {" "}Visitors : {visited}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 export default Main;

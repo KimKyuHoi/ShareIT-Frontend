@@ -1,17 +1,10 @@
 import axios from "axios";
 import { BASE_URL } from "../Constants/url";
-import { num } from "../Constants/number"  
 
-const ShowResult = async () => {
+const VisitUser = async () => {
     try {
         const response = await axios.get(
-            `${BASE_URL}/question/${num}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-
-                },
-            }
+            `${BASE_URL}/visited`,
         );
 
         return response.data;
@@ -22,4 +15,4 @@ const ShowResult = async () => {
     }
 };
 
-export default ShowResult;
+export default VisitUser;

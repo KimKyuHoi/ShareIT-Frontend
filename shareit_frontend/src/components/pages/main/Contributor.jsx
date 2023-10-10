@@ -58,14 +58,15 @@ const Contributor = () => {
                             <div className="teamList">
                                 <h3>Frontend</h3>
                                 <ul>
-                                    <li><FontAwesomeIcon icon={faStar} flip size="2xs" style={{ color: "#fcc783", }} />김규회</li>
+                                    <li><FontAwesomeIcon icon={faCrown} bounce size="2xs" style={{ color: "#fcc783", }} />김규회</li>
                                     <li><FontAwesomeIcon icon={faStar} flip size="2xs" style={{ color: "#fcc783", }} />이강현</li>
                                     <li><FontAwesomeIcon icon={faStar} flip size="2xs" style={{ color: "#fcc783", }} />이수현</li>
                                 </ul>
                                 <h3>Backend</h3>
                                 <ul>
-                                    <li><FontAwesomeIcon icon={faCrown} bounce size="2xs" style={{ color: "#fcc783", }} />황효성</li>
+                                    <li><FontAwesomeIcon icon={faStar} flip size="2xs" style={{ color: "#fcc783", }} />황효성</li>
                                     <li><FontAwesomeIcon icon={faStar} flip size="2xs" style={{ color: "#fcc783", }} />이은지</li>
+                                    <li><FontAwesomeIcon icon={faStar} flip size="2xs" style={{ color: "#fcc783", }} />권수현</li>
                                 </ul>
                             </div>
                         </div>

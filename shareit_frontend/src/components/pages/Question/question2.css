@@ -39,14 +39,14 @@
   /* header-text */
   /* IconLion */
   /* SCSS styles */
-  .content-text {
+  /* .content-text {
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
     line-height: 150%;
     text-align: center;
     color: #000000;
-  }
+  } */
   
   .header-container {
     width: 100%;
@@ -153,7 +153,7 @@
   .Question-text {
     position: absolute;
     height: 53px;
-    font-size: 20px;
+    font-size: 15px;
     top: 143px;
     display: flex;
     align-items: center;

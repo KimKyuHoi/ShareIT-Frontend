@@ -1,4 +1,3 @@
-import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Result from "./components/pages/result/Result";
 import QuestionPage from "./components/pages/Question/QuestionPage";
