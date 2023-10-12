@@ -216,7 +216,7 @@ const Result = () => {
     selectedData = DUMMY_DATA[0]; // 예를 들어 기본값으로 첫 번째 데이터 항목을 선택
   }
 
-  const urlRef = useRef("http://223.130.134.83");
+  const urlRef = useRef("http://13.210.163.78/");
 
   const copyToClipboard = () => {
     if (urlRef.current) {
