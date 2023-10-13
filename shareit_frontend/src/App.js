@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Result from "./components/pages/result/Result";
-import QuestionPage from "./components/pages/Question/QuestionPage";
-import Home from "./components/pages/main/Home";
-import Error from "./components/pages/Error/Error"
-import Contributor from './components/pages/main/Contributor';
-import Help from './components/pages/main/Help';
+import Result from "./components/result/Result";
+import QuestionPage from "./components/Question/QuestionPage";
+import Home from "./components/main/Home";
+import Error from "./components/Error/Error"
+import Contributor from "./components/main/Contributor";
+import Help from './components/main/Help';
 
 function App() {
   return (

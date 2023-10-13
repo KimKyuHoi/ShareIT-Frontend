@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../Constants/url";
 import { num } from "../Constants/number"
-import { memberId, answerId1} from "../Constants/url"
+import { answerId1} from "../Constants/url"
 
 const ShowResult = async (answerContent1) => {
     try {

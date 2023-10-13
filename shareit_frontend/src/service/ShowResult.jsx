@@ -4,7 +4,7 @@ import { BASE_URL } from "../Constants/url";
 const ShowResult = async () => {
     try {
         const response = await axios.get(
-            `${BASE_URL}/result/1`,
+            `${BASE_URL}/result/1`, {withCredentials: true},
         );
 
         return response.data;
