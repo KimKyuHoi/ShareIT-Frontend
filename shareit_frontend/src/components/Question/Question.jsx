@@ -217,15 +217,15 @@ export default function SQuestion() {
               <span className="Question-progress-text content-text">
                 {stage}
               </span>
-
               <div className="bar">
                 <div
                   className="bar-progress"
                   style={{ width: `${barProgressWidth}%` }}
                 />
               </div>
-
-              <span className="Question-text content-text">{urlQuestion}</span>
+              <span className="Question-text content-text">
+                {urlQuestion || "로딩중"}
+              </span>
 
               <button
                 className="Question-answer-left"
@@ -245,7 +245,6 @@ export default function SQuestion() {
                   {urlAnswer}
                 </span>
               </button>
-
               <button
                 className="Question-answer-right"
                 onClick={(event) => {
@@ -254,7 +253,7 @@ export default function SQuestion() {
                 }}
               >
                 <img
-                  className=" Question-answer-rightimg"
+                  className=" Question-answer-leftimg"
                   src="./img/Question-answer-right.png "
                   alt="right"
                   onClick={(event) => handleImageClick(event)}
@@ -263,7 +262,6 @@ export default function SQuestion() {
                   {urlAnswer2}
                 </span>
               </button>
-
               <img
                 ref={lionRef}
                 className={`Lion image ${motion ? "walking" : ""}`}
