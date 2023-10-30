@@ -17,36 +17,7 @@
     justify-content: center;
     align-items: center;
   }
-  
-  /* Question-wrapper */
-  /* Question-content */
-  /* Question-backgroud */
-  /* Question-answer-right */
-  /* Question-answer-left */
-  /* bar */
-  /* bar-progress  12단계가 있음 stage를 바꾸면 된다*/
-  /* Question-text */
-  /* Question-answer-text */
-  /* Question-answer-text */
-  /* Lion */
-  /* Question-progress-text */
-  /* Question-header */
-  /* Question-background */
-  /* header-background */
-  /* header-link-background */
-  /* header-page-background */
-  /* header-text */
-  /* header-text */
-  /* IconLion */
-  /* SCSS styles */
-  /* .content-text {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 150%;
-    text-align: center;
-    color: #000000;
-  } */
+
   
   .header-container {
     width: 100%;
