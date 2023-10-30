@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import "../Question/question.scss";
+import "../Question/question2.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackgroundImage from "../../assets/MainBackground.png";
 import {
@@ -126,7 +126,15 @@ const Main = () => {
                     />
                   </li>
                 </ul>
-                <span className="visitors"><FontAwesomeIcon icon={faStar} flip size="2xs" style={{ color: "#fcc783", }} /> {" "}Visitors : {visited}</span>
+                <span className="visitors">
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    flip
+                    size="2xs"
+                    style={{ color: "#fcc783" }}
+                  />{" "}
+                  Visitors : {visited}
+                </span>
               </div>
             </div>
           </div>

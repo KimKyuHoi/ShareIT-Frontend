@@ -17,36 +17,7 @@
     justify-content: center;
     align-items: center;
   }
-  
-  /* Question-wrapper */
-  /* Question-content */
-  /* Question-backgroud */
-  /* Question-answer-right */
-  /* Question-answer-left */
-  /* bar */
-  /* bar-progress  12단계가 있음 stage를 바꾸면 된다*/
-  /* Question-text */
-  /* Question-answer-text */
-  /* Question-answer-text */
-  /* Lion */
-  /* Question-progress-text */
-  /* Question-header */
-  /* Question-background */
-  /* header-background */
-  /* header-link-background */
-  /* header-page-background */
-  /* header-text */
-  /* header-text */
-  /* IconLion */
-  /* SCSS styles */
-  /* .content-text {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 150%;
-    text-align: center;
-    color: #000000;
-  } */
+
   
   .header-container {
     width: 100%;
@@ -273,11 +244,6 @@
     width: auto;
   }
   
-  .Question-answer-rightimg {
-    position: absolute;
-    height: 128.71px;
-    width: auto;
-  }
   
   .Question-answer-right:hover {
     transform: translateY(-20px);
@@ -292,7 +258,6 @@
     position: absolute;
     width: 210px;
     height: 71px;
-    top: 15px;
     font-size: 16px;
   }
   
@@ -301,7 +266,6 @@
     position: absolute;
     width: 210px;
     height: 71px;
-    top: 15px;
     font-size: 16px;
   }
   
@@ -333,19 +297,17 @@
     .Question-answer-right {
       width: 134px;
       height: 100px;
+      left: calc(50% + 60px);
     }
   
     .Question-answer-left {
       width: 134px;
       height: 100px;
+      right: calc(50% + 60px);
     }
   
     .Question-answer-leftimg {
-      height: 70px;
-    }
-  
-    .Question-answer-rightimg {
-      height: 70px;
+      height: 100px;
     }
   
     .Question-answer-text-left {
@@ -363,6 +325,18 @@
       font-size: 0.75rem;
       top: 25px;
     }
+  }
+    @media screen and (max-width: 320px) {
+      .Question-answer-leftimg {
+        height: 70px;
+      }
+    
+      .Question-answer-rightimg {
+        height: 70px;
+      }
+
+      
+    
   }
   .modal {
     width: 150px;

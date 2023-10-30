@@ -56,6 +56,7 @@ import BackgroundImage from "../../assets/background.png";
 import snsBtn from "../../assets/SNSBtn.png";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../Constants/url";
 
 const DUMMY_DATA = [
   {
@@ -216,7 +217,7 @@ const Result = () => {
     selectedData = DUMMY_DATA[0]; // 예를 들어 기본값으로 첫 번째 데이터 항목을 선택
   }
 
-  const urlRef = useRef("http://13.210.163.78/");
+  const urlRef = useRef(`${BASE_URL}`);
 
   const copyToClipboard = () => {
     if (urlRef.current) {
