@@ -1,16 +1,30 @@
 {
   "files": {
-    "main.css": "/static/css/main.42e9321a.css",
-    "main.js": "/static/js/main.35cb5767.js",
+    "main.css": "/static/css/main.c1925c42.css",
+    "main.js": "/static/js/main.ce7f3e2c.js",
     "static/media/MainBackground.png": "/static/media/MainBackground.cf4093be980c947d1b58.png",
     "static/media/background.png": "/static/media/background.c0a41738a404809c198b.png",
+    "static/media/title_BigData.png": "/static/media/title_BigData.3c1e974a4dcb87ed36d9.png",
+    "static/media/title_devOps.png": "/static/media/title_devOps.94056395a1ed4de9ef6c.png",
+    "static/media/title_blockChain.png": "/static/media/title_blockChain.937e22134588a8abafbc.png",
+    "static/media/title_Embedded.png": "/static/media/title_Embedded.9be5ee79e61f81a6f001.png",
+    "static/media/title_Graphic.png": "/static/media/title_Graphic.cf19515c41e2f75aa783.png",
+    "static/media/title_Game.png": "/static/media/title_Game.46c30d82be5cdb739440.png",
+    "static/media/title_Security.png": "/static/media/title_Security.c698875a7319c1f2f70a.png",
+    "static/media/title_web_design.png": "/static/media/title_web_design.6c86ea862d1c985de516.png",
+    "static/media/title_Network.png": "/static/media/title_Network.ef2706003b130cc15420.png",
+    "static/media/title_planner.png": "/static/media/title_planner.da8663b4996c2198dfc8.png",
+    "static/media/title_full_stack.png": "/static/media/title_full_stack.f21c039464af0d80d235.png",
+    "static/media/title_IOS.png": "/static/media/title_IOS.b0ee944e4280f26286ed.png",
+    "static/media/title_Android.png": "/static/media/title_Android.e7b79b5dbd1ef48450dd.png",
     "static/media/FrontendTitle.png": "/static/media/FrontendTitle.ddfd645c0d9f79d9a1bc.png",
+    "static/media/title_backend.png": "/static/media/title_backend.435a54b6ab974929b81d.png",
     "index.html": "/index.html",
-    "main.42e9321a.css.map": "/static/css/main.42e9321a.css.map",
-    "main.35cb5767.js.map": "/static/js/main.35cb5767.js.map"
+    "main.c1925c42.css.map": "/static/css/main.c1925c42.css.map",
+    "main.ce7f3e2c.js.map": "/static/js/main.ce7f3e2c.js.map"
   },
   "entrypoints": [
-    "static/css/main.42e9321a.css",
-    "static/js/main.35cb5767.js"
+    "static/css/main.c1925c42.css",
+    "static/js/main.ce7f3e2c.js"
   ]
 }
