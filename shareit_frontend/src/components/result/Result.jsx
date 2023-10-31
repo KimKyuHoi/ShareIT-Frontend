@@ -272,7 +272,7 @@ const Result = () => {
           <input
             type="text"
             ref={urlRef}
-            defaultValue="http://223.130.134.83" // 클립보드에 복사할 URL 설정
+            defaultValue="http://share-it.p-e.kr" // 클립보드에 복사할 URL 설정
             readOnly
             style={{ position: "absolute", left: "-9999px" }}
           />

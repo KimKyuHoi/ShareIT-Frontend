@@ -27,7 +27,7 @@ function Modal({ showModal, setShowModal, result }) {
   return (
     <div className="modal">
       <div className="modal-content">
-        <button onClick={handleNavigate}>{result}</button>
+        <button onClick={handleNavigate}>결과를 확인해보세요</button>
       </div>
     </div>
   );
@@ -143,13 +143,13 @@ export default function SQuestion() {
     if (stage === 12) {
       console.log("modal");
       setShowModal(true);
-      axios
-        .get(`${BASE_URL}/result/1`, { withCredentials: true })
-        .then((res) => {
-          console.log(res.data);
-          setResult(res.data.tenType);
-          console.log(result);
-        });
+      // axios
+      //   .get(`${BASE_URL}/result/1`, { withCredentials: true })
+      //   .then((res) => {
+      //     console.log(res.data);
+      //     setResult(res.data.tenType);
+      //     console.log(result);
+      //   });
     }
   };
 
