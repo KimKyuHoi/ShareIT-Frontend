@@ -56,3 +56,4 @@ $ npm run start
 - CSS
 - Framer-Motion
 - Nginx
+- Git
