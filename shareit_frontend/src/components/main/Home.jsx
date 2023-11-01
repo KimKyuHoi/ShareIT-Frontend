@@ -22,6 +22,21 @@ import { useEffect, useState } from "react";
 const Main = () => {
   const navigate = useNavigate();
   const [visited, setVisited] = useState(0);
+  console.log(`
+  _____  _                         _____  _____ 
+ /  ___|| |                       |_   _||_   _|
+ \\ \`--. | |__    __ _  _ __   ___   | |    | |  
+  \`--. \\| '_ \\  / _\` || '__| / _ \\  | |    | |  
+ /\\__/ /| | | || (_| || |   |  __/ _| |_   | |  
+ \\____/ |_| |_| \\__,_||_|    \\___| \\___/   \\_/  
+
+                                        Share IT
+
+ 김규회 https://github.com/KimKyuHoi/
+ 이수현 https://github.com/DingX2
+ 권수현 https://github.com/kwonssshyeon
+ 이은지 https://github.com/leeeeunji
+`);
 
   useEffect(() => {
     VisitUser()

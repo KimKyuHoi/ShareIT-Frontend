@@ -167,7 +167,7 @@ const Result = () => {
         setTenType(data.tenType);
       })
       .catch((error) => {
-        console.error(error);
+        console.error("에러가 발생했습니다. 처음부터 다시 시도해주세요.");
         alert(error.response.data);
         throw new Error(error.response.data.message);
       });
