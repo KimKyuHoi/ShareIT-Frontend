@@ -147,8 +147,8 @@ const Main = () => {
                     flip
                     size="2xs"
                     style={{ color: "#fcc783" }}
-                  />{" "}
-                  Visitors : {visited}
+                  />
+                  {` Visitors: ${visited || "로딩중 !! START를 누르지 마세요"}`}
                 </span>
               </div>
             </div>

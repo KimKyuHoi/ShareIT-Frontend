@@ -49,7 +49,22 @@ export default function SQuestion() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const lionRef = useRef(null);
-  const wrapperRef = useRef(null);
+  const wrapperRef = console.log(`
+  _____  _                         _____  _____ 
+ /  ___|| |                       |_   _||_   _|
+ \\ \`--. | |__    __ _  _ __   ___   | |    | |  
+  \`--. \\| '_ \\  / _\` || '__| / _ \\  | |    | |  
+ /\\__/ /| | | || (_| || |   |  __/ _| |_   | |  
+ \\____/ |_| |_| \\__,_||_|    \\___| \\___/   \\_/  
+
+                                        Share IT
+
+ 김규회 https://github.com/KimKyuHoi/
+ 이수현 https://github.com/DingX2
+ 권수현 https://github.com/kwonssshyeon
+ 이은지 https://github.com/leeeeunji
+`);
+  useRef(null);
 
   const [urlQuestion, setUrlQuestion] = useState("");
   const [urlAnswer, setUrlAnswer] = useState("");
@@ -78,20 +93,20 @@ export default function SQuestion() {
   const toggleWalking = (direction) => {
     if (direction === "Right") {
       // console.log("오른쪽이동");
-      axios
-        .get(`${BASE_URL}/answer/1/${urlAnswerIdR}`, { withCredentials: true })
-        .then((res) => {
-          // console.log(res.data);
-        });
+      // axios
+      //   .get(`${BASE_URL}/answer/1/${urlAnswerIdR}`, { withCredentials: true })
+      //   .then((res) => {
+      //     // console.log(res.data);
+      //   });
 
       setWalking((prevWalking) => 2);
     } else if (direction === "Left") {
       // console.log("왼쪽이동");
-      axios
-        .get(`${BASE_URL}/answer/1/${urlAnswerIdL}`, { withCredentials: true })
-        .then((res) => {
-          // console.log(res.data);
-        });
+      // axios
+      //   .get(`${BASE_URL}/answer/1/${urlAnswerIdL}`, { withCredentials: true })
+      //   .then((res) => {
+      //     // console.log(res.data);
+      //   });
 
       setWalking((prevWalking) => 1);
     }
@@ -100,6 +115,11 @@ export default function SQuestion() {
   /*사자의 위치 설정 함수*/
   useEffect(() => {
     if (walking === 2 && position < Rposition) {
+      axios
+        .get(`${BASE_URL}/answer/1/${urlAnswerIdR}`, { withCredentials: true })
+        .then((res) => {
+          // console.log(res.data);
+        });
       const interval = setInterval(() => {
         setMotion((prevMotion) => !prevMotion);
         setPosition((prevPosition) => prevPosition + 10);
@@ -113,6 +133,11 @@ export default function SQuestion() {
         setMotion((prevMotion) => !prevMotion);
         setPosition((prevPosition) => prevPosition - 10);
       }, 100);
+      axios
+        .get(`${BASE_URL}/answer/1/${urlAnswerIdL}`, { withCredentials: true })
+        .then((res) => {
+          // console.log(res.data);
+        });
 
       return () => {
         clearInterval(interval);
