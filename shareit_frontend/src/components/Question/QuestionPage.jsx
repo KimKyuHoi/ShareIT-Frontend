@@ -1,7 +1,6 @@
 import Question from "./Question";
 import { motion } from "framer-motion";
 
-
 export default function QuestionPage() {
   return (
     <motion.div

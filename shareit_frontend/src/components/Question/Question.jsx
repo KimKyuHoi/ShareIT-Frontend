@@ -58,12 +58,12 @@ export default function SQuestion() {
   const [urlAnswerIdR, setUrlAnswerIdR] = useState();
   const [result, setResult] = useState("null");
 
-  /* API 통신 코드가 필요한 부분 */
+  /* 질문지 가져오기 */
   useEffect(() => {
     axios
       .get(`${BASE_URL}/question/${stage}`, { withCredentials: true })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setUrlQuestion(response.data.questionContent);
         setUrlAnswer(response.data.answerContent1);
         setUrlAnswer2(response.data.answerContent2);
@@ -77,22 +77,20 @@ export default function SQuestion() {
 
   const toggleWalking = (direction) => {
     if (direction === "Right") {
-      console.log("오른쪽이동");
-      /* API 통신 코드가 필요한 부분 */
+      // console.log("오른쪽이동");
       axios
         .get(`${BASE_URL}/answer/1/${urlAnswerIdR}`, { withCredentials: true })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
         });
 
       setWalking((prevWalking) => 2);
     } else if (direction === "Left") {
-      console.log("왼쪽이동");
-      /* API 통신 코드가 필요한 부분 */
+      // console.log("왼쪽이동");
       axios
         .get(`${BASE_URL}/answer/1/${urlAnswerIdL}`, { withCredentials: true })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
         });
 
       setWalking((prevWalking) => 1);
@@ -129,7 +127,7 @@ export default function SQuestion() {
       const lionRect = lionElement.getBoundingClientRect();
       const wrapperRect = wrapperElement.getBoundingClientRect(); // 수정된 부분
       const initialPosition = wrapperRect.width / 2 - lionRect.width / 2;
-      console.log("Lion의 초기 위치:", initialPosition);
+      // console.log("Lion의 초기 위치:", initialPosition);
       setPosition(initialPosition);
       setLposition(initialPosition - 100);
       setRposition(initialPosition + 100);
@@ -137,11 +135,11 @@ export default function SQuestion() {
   }, [position]);
 
   const handleStage = (event) => {
-    console.log(stage);
+    // console.log(stage);
     event.stopPropagation();
     setStage((prevStage) => (prevStage < 12 ? prevStage + 1 : prevStage));
     if (stage === 12) {
-      console.log("modal");
+      // console.log("modal");
       setShowModal(true);
       // axios
       //   .get(`${BASE_URL}/result/1`, { withCredentials: true })
@@ -154,7 +152,7 @@ export default function SQuestion() {
   };
 
   const handleImageClick = (event) => {
-    console.log("이미지클릭됨");
+    // console.log("이미지클릭됨");
     event.stopPropagation();
   };
 
