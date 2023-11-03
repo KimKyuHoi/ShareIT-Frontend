@@ -32,7 +32,7 @@ const override = {
 const Main = () => {
   const navigate = useNavigate();
   const [visited, setVisited] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   console.log(`
   _____  _                         _____  _____ 
  /  ___|| |                       |_   _||_   _|
